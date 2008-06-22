@@ -51,11 +51,7 @@ $x=3; $y=3;
 $x1=10+($xstep*$x);
 $y1=10+($ystep*$y);
 
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-&drawHexagon($x1,$y1,50);
-=======
 &drawHexagon($x1,$y1,25);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 
 sub drawHexagon{
 #radius = edge for regular hex
@@ -63,27 +59,14 @@ sub drawHexagon{
 	my ($x,$y,$radius)=@_;
 	my $hexagon= new GD::Polygon;
 
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-=======
 	my $b=$radius * (.75**.5);
 
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 	$hexagon->addPt($x+$radius,$y);
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-	$hexagon->addPt($x+(.5*$radius),$y+(($radius)*(.75)^.5));
-	$hexagon->addPt($x-(.5*$radius),$y+(($radius)*(.75)^.5));
-=======
 	$hexagon->addPt($x+(.5*$radius),$y+$b);
 	$hexagon->addPt($x-(.5*$radius),$y+$b);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 	$hexagon->addPt($x-$radius,$y);
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-	$hexagon->addPt($x-(.5*$radius),$y-(($radius)*(.75)^.5));
-	$hexagon->addPt($x+(.5*$radius),$y-(($radius)*(.75)^.5));
-=======
 	$hexagon->addPt($x-(.5*$radius),$y-$b);
 	$hexagon->addPt($x+(.5*$radius),$y-$b);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 
 	$img->fgcolor('white');
 	$img->bgcolor('white');
@@ -94,31 +77,15 @@ sub drawHexagon{
 	$img->moveTo($x,$y);
 	$img->lineTo($x+$radius,$y);	
 	$img->moveTo($x,$y);
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-	$img->lineTo($x+(.5*$radius),$y+(($radius)*(.75)^.5));
-=======
 	$img->lineTo($x+(.5*$radius),$y+$b);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 	$img->moveTo($x,$y);
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-	$img->lineTo($x-(.5*$radius),$y+(($radius)*(.75)^.5));
-=======
 	$img->lineTo($x-(.5*$radius),$y+$b);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 	$img->moveTo($x,$y);
 	$img->lineTo($x-$radius,$y);	
 	$img->moveTo($x,$y);
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-	$img->lineTo($x-(.5*$radius),$y-(($radius)*(.75)^.5));
-=======
 	$img->lineTo($x-(.5*$radius),$y-$b);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 	$img->moveTo($x,$y);
-<<<<<<< HEAD:trunk/alleg/icontest/hexagon.pl
-	$img->lineTo($x+(.5*$radius),$y-(($radius)*(.75)^.5));
-=======
 	$img->lineTo($x+(.5*$radius),$y-$b);
->>>>>>> e2f4a28efef03799cff911bb78d78d6b4032c0fa:trunk/alleg/icontest/hexagon.pl
 
 }
 
