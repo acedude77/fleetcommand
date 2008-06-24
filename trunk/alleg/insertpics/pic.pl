@@ -55,9 +55,23 @@ $x1=10+($xstep*$x);
 $y1=10+($ystep*$y);
 
 
+$img3 = newFromPng GD::Image('hexagonGreyFilled.png');
+$img4 = newFromPng GD::Image('triangle.png');
 
+$img->copyMerge($img3,0,0,0,0,225,200,50);
 
 $img->copy($img2,0,0,0,0,160,120); 
 $img->copy($img2,$x1,$y1,0,0,160,120); 
+
+
+$img->copyMerge($img3,0,0,0,0,225,200,0);
+
+$x=2;$y=4;
+
+$x1=10+($xstep*$x);
+$y1=10+($ystep*$y);
+
+$img->copyMerge($img4,$x1,$y1,0,0,103,90,40);
+
 
 print OUTPUT $img->png;
