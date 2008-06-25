@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-
+ 
 use GD;
 use GD::Simple;
 
