@@ -57,20 +57,13 @@ $y1=10+($ystep*$y);
 
 $img3 = newFromPng GD::Image('hexagonGreyFilled.png');
 $img4 = newFromPng GD::Image('triangle.png');
-<<<<<<< HEAD:alleg/insertpics/pic.pl
-=======
 $img5 = newFromGif GD::Image('hexagonGreyFilled.gif');
->>>>>>> 71833ecf3e5c7f305b0513f06aa9af568132c8c3:alleg/insertpics/pic.pl
 
 $img->copyMerge($img3,0,0,0,0,225,200,50);
 
 $img->copy($img2,0,0,0,0,160,120); 
 $img->copy($img2,$x1,$y1,0,0,160,120); 
 
-<<<<<<< HEAD:alleg/insertpics/pic.pl
-
-=======
->>>>>>> 71833ecf3e5c7f305b0513f06aa9af568132c8c3:alleg/insertpics/pic.pl
 $img->copyMerge($img3,0,0,0,0,225,200,0);
 
 $x=2;$y=4;
@@ -80,12 +73,9 @@ $y1=10+($ystep*$y);
 
 $img->copyMerge($img4,$x1,$y1,0,0,103,90,40);
 
-<<<<<<< HEAD:alleg/insertpics/pic.pl
-=======
 $x=4;$y=2;
 $x1=10+($xstep*$x);
 $y1=10+($ystep*$y);
 $img->copyMerge($img5,$x1,$y1,0,0,225,200,40);
->>>>>>> 71833ecf3e5c7f305b0513f06aa9af568132c8c3:alleg/insertpics/pic.pl
 
 print OUTPUT $img->png;
