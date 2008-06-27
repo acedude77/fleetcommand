@@ -13,18 +13,89 @@ sub main{
     my $background="constellation_background_image.gif";
 
     #grid sizes
-    my $xgridsize=75;
-    my $ygridsize=75;
+    local $xgridsize=75;
+    local $ygridsize=75;
 
+#create a database of available .gif icon components
+    local %componentDB=&createComponentDB;
+#    print "$componentDB{7}{One}";
 
+#output filehandle
     open(OUTPUTPNG,">$outputpng");
-    $img_background = newFromGif GD::Image($background);
+
+#create an image same size as the background and place background on it
+    my $img_background = newFromGif GD::Image($background);
     ($width,$height)=$img_background->getBounds();
     # create a new image
-    $img = GD::Simple->new($width,$height);
+    local $img = GD::Simple->new($width,$height);
     $img->copy($img_background,0,0,0,0,$width,$height);
+
+#add grid
     &placeGrid($width,$height,$xgridsize,$ygridsize);
 
+
+#place a test octagon
+
+#octagon config
+    my %config1;
+    $config1{7}{Yellow}="";
+    $config1{7}{DoubleUpgrade}="";
+    $config1{7}{Sup}="";
+    $config1{7}{BaseIcon}="";
+
+    &placeOctagon(10,10,\%config1);
+
+
+    my %config2;
+    $config2{7}{Blue}="";
+    $config2{7}{Garr}="";
+    $config2{7}{Constructor}="";
+    $config2{7}{Two}="";
+    $config2{7}{Upgrade}="";
+    
+    &placeOctagon(20,10, \%config2);
+
+    print OUTPUTPNG $img->png;
+
+}
+
+sub placeOctagon{
+    my($x,$y,$config)=@_;
+    my $x1=$x*$xgridsize;
+    my $y1=$y*$ygridsize;
+
+    $img->copy(newFromGif GD::Image('blancOctagon.gif'),$x1,$y1,0,0,300,300);
+
+    #color triangles first, delete from %config after coloring
+    foreach my $sector (keys %$config){
+	foreach my $modifier (keys %{$$config{$sector}}){
+	    if($modifier eq "Blue"){
+		$img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
+		delete $$config{$sector}{$modifier};
+	    }elsif($modifier eq "Yellow"){
+		$img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
+		delete $$config{$sector}{$modifier};
+	    }
+	}
+    }
+
+    #place remaining icon components
+    foreach my $sector (keys %$config){
+	foreach my $modifier (keys %{$$config{$sector}}){
+	    $img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
+	}
+    }
+}
+
+sub createComponentDB{
+    my @components=<sector*.gif>;
+    my %components;
+
+    foreach my $file (@components){
+	$file=~/sector(\d)(\w*)/;
+	$components{$1}{$2}="$file";
+    }
+    return %components;
 }
 
 
@@ -64,31 +135,3 @@ sub placeGrid{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-#$img1 = newFromGif GD::Image('constellations.gif');
-#$img2 = newFromGif GD::Image('octagon_empty_sample.gif');
-#$img3 = newFromGif GD::Image('octagon_filled_sector_1.gif');
-#$img4 = newFromGif GD::Image('octagon_filled_sector_6.gif');
-#
-#$img->copy($img1,0,0,0,0,1000,1300);
-#$img->copy($img2,0,0,0,0,300,300); 
-#$img->copy($img3,0,0,0,0,300,300); 
-#$img->copy($img4,0,0,0,0,300,300); 
-
-
-
-#$img->copy($img2,500,500,0,0,300,300); 
-#$img->copy($img3,500,500,0,0,300,300); 
-#$img->copy($img4,500,500,0,0,300,300); 
-
-
-print OUTPUTPNG $img->png;
