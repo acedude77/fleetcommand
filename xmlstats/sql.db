@@ -1,0 +1,86 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.3deb1ubuntu1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 30, 2008 at 02:49 AM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.4-2ubuntu5.1
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `Alleg`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `GameInfo`
+--
+
+CREATE TABLE IF NOT EXISTS `GameInfo` (
+  `id` int(100) NOT NULL auto_increment,
+  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `Server` varchar(100) NOT NULL,
+  `GameOverReason` varchar(100) NOT NULL,
+  `Date` varchar(100) NOT NULL,
+  `Core` varchar(100) NOT NULL,
+  `unique` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `GameInfo`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `PlayersScore`
+--
+
+CREATE TABLE IF NOT EXISTS `PlayersScore` (
+  `id` int(100) NOT NULL auto_increment,
+  `Kills` varchar(100) NOT NULL,
+  `TimePlayed` varchar(100) NOT NULL,
+  `BaseKills` varchar(100) NOT NULL,
+  `IsCommander` varchar(100) NOT NULL,
+  `TeamNumber` varchar(100) NOT NULL,
+  `Ejections` varchar(100) NOT NULL,
+  `Score` varchar(100) NOT NULL,
+  `Deaths` varchar(100) NOT NULL,
+  `Rank` varchar(100) NOT NULL,
+  `Assists` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `BaseCaptures` varchar(100) NOT NULL,
+  `unique` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `PlayersScore`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Teams`
+--
+
+CREATE TABLE IF NOT EXISTS `Teams` (
+  `id` int(100) NOT NULL auto_increment,
+  `Faction` varchar(100) NOT NULL,
+  `TeamNumber` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `unique` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `Teams`
+--
+
+
