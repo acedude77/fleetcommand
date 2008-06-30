@@ -18,29 +18,30 @@ foreach my $k1 (keys %$gameinfo) {
 
 print "--------------\n";
 
+#print "@{$$teams{Team}}\n";
+#print "$$teams{Team}\n";
+
 foreach my $k1 (keys %$teams){
-	print "$k1 @{$$teams{$k1}}\n";
+
+	foreach my $k2 (@{$$teams{$k1}}){
+		foreach my $k3 (keys(%$k2)){
+			print "$k1 $k3 $$k2{$k3}\n";
+		}
+		print "----\n";
+	}	
+	#print "$k1 @{$$teams{$k1}}\n";
 }
 
-print "${$$teams{Team}}[1]{Faction}";
+#print "${$$teams{Team}}[1]{Faction}\n";
 
 print "--------------\n";
 
-
-
-
-__END__
-
-for my $k1 ( sort keys %$scores ) {
-      print "$k1\n";
-   
-      for my $k2 ( sort keys %{$scores->{ $k1 }} ) {
-          print "\t$k2\n";
-   
-          for my $k3 ( sort keys %{$scores->{ $k1 }->{ $k2 }} ) {
-              print "\t\t$k3 => $scores->{ $k1 }->{ $k2 }->{ $k3 }\n";
-          }
-      }
+foreach my $k1 (keys %$playersscore){
+	foreach my $k2 (@{$$playersscore{$k1}}){
+		foreach my $k3 (keys(%$k2)){
+			print "$k3 $$k2{$k3}\n";
+		}
+		print "----\n";
+	}
 }
-
 
