@@ -18,6 +18,9 @@ $black = $img->colorAllocate(0,0,0);
 $red = $img->colorAllocate(255,0,0);      
 $blue = $img->colorAllocate(0,0,255);
 
+sub moneysetting(){
+	my ($category,$value)=@_;
+
 #tac
 $img->fill(196,157,$blue);
 #exp
@@ -49,6 +52,8 @@ $j=0;
 while($j<7){
 	$img->fill(259,157+($j*6),$blue);
 	$j++;
+}
+
 }
 
 print OUTPUTPNG $img->png;
