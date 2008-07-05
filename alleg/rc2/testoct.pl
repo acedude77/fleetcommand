@@ -50,7 +50,7 @@ $blue = $img->colorAllocate(0,0,255);
     	$config1{7}{Sup}="";
     	$config1{7}{BaseIcon}="";
 	$config1{3}{EmptyMoneyTechIcons}="";
-#	$config1{3}{Grey}="";
+	$config1{3}{Grey}="";
    	&placeOctagon(10,10,\%config1);
 	&moneysetting(10,10,"exp tac",0,1,2,3);
 
@@ -68,9 +68,9 @@ $blue = $img->colorAllocate(0,0,255);
     	$config2{7}{Two}="";
     	$config2{7}{UpgradeOnce}="";
 	$config2{3}{EmptyMoneyTechIcons}="";
-#	$config2{3}{Grey}="";
+	$config2{3}{Grey}="";
     	&placeOctagon(20,10, \%config2);
-	&moneysetting(20,10,"tac sup",3,2,1,0);
+	&moneysetting(20,10,"tac sup min",3,2,1,0);
 	
     	print OUTPUTPNG $img->png;
 
@@ -90,6 +90,9 @@ sub moneysetting(){
 	}
 	if($category=~/sup/){
         	$img->fill(196+$x1,169+$y1,$blue);
+	}
+	if($category=~/min/){
+        	$img->fill(209+$x1,169+$y1,$blue);
 	}
 
 
