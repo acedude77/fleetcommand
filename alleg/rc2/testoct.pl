@@ -11,7 +11,6 @@ sub main{
 
     #background image
     my $background="constellation_background_image.gif";
-    #my $background="constellation_background_image_old.gif";
 
     #grid sizes
     local $xgridsize=75;
