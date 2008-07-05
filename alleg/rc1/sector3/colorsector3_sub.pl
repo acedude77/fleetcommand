@@ -18,40 +18,49 @@ $black = $img->colorAllocate(0,0,0);
 $red = $img->colorAllocate(255,0,0);      
 $blue = $img->colorAllocate(0,0,255);
 
-sub moneysetting(){
-	my ($category,$value)=@_;
+&moneysetting("exp",0,4,5,2);
 
-#tac
-$img->fill(196,157,$blue);
-#exp
-$img->fill(196,163,$black);
-#sup
-$img->fill(196,169,$red);
+sub moneysetting(){
+	my ($category,$tr,$t,$r,$s)=@_;
+
+if($category=~/tac/){
+	$img->fill(196,157,$blue);
+}
+if($category=~/exp/){
+	$img->fill(196,163,$black);
+}
+if($category=~/sup/){
+	$img->fill(196,169,$red);
+}
+
 
 #tr
-$img->fill(223,157,$red);
-$img->fill(223,163,$red);
-$img->fill(223,169,$red);
+my $k=0;
+while($tr>0){
+	$img->fill(223,157+($k*6),$red);
+	$tr--;$k++;
+}
+
 
 #t
-$j=0;
-while($j<8){
-	$img->fill(235,157+($j*6),$red);
-	$j++;
+$k=0;
+while($t>0){
+	$img->fill(235,157+($k*6),$red);
+	$t--;$k++;
 }
 
 #r
-$j=0;
-while($j<8){
-	$img->fill(247,157+($j*6),$blue);
-	$j++;
+$k=0;
+while($r>0){
+	$img->fill(247,157+($k*6),$blue);
+	$r--;$k++;
 }
 
 #s
-$j=0;
-while($j<7){
-	$img->fill(259,157+($j*6),$blue);
-	$j++;
+$k=0;
+while($s>0){
+	$img->fill(259,157+($k*6),$blue);
+	$s--;$k++;
 }
 
 }
