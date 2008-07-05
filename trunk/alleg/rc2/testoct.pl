@@ -136,7 +136,6 @@ sub placeOctagon{
 	foreach my $modifier (keys %{$$config{$sector}}){
 	    if($modifier =~/Blue|Yellow|Grey/ ){
 		$img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
-		print "deleting $sector $modifier\n";
 		delete $$config{$sector}{$modifier};
 	    }
 	}
@@ -145,7 +144,6 @@ sub placeOctagon{
     #place remaining icon components
     foreach my $sector (keys %$config){
 	foreach my $modifier (keys %{$$config{$sector}}){
-		print "$sector $modifier\n";
 	    $img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
 	}
     }
