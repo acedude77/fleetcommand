@@ -61,7 +61,6 @@ $blue = $img->colorAllocate(0,0,255);
     	$config2{4}{Yellow}="";
     	$config2{5}{Yellow}="";
     	$config2{6}{Yellow}="";
-    	$config2{7}{Yellow}="";
     	$config2{8}{Yellow}="";
     	$config2{7}{Garr}="";
     	$config2{7}{Constructor}="";
