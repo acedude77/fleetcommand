@@ -7,6 +7,7 @@ require "/home/jctong/workarea/svn/alleg/ui/main_configurator/testoct.pm";
 print header,start_html;
 
 $a=param('data');
+
 #$a=~s/\n/<br>/g;
 #$a=~s/\t/-/g;
 #print $a;
@@ -22,7 +23,7 @@ print end_html;
 
 sub main{
 
-	my($webinput)=@_;
+	my($webinput)=@_;	
 	    #output filename
     my $outputpng="output.png";
 
@@ -36,7 +37,29 @@ sub main{
     local %componentDB=&createComponentDB;
 #    print "$componentDB{7}{One}";
 
-my @input=split(/\n/,$webinput);
+#output filehandle
+    open(OUTPUTPNG,">$outputpng");
+
+#create an image same size as the background and place background on it
+    my $img_background = newFromGif GD::Image($background);
+    ($width,$height)=$img_background->getBounds();
+    # create a new image
+        #third arg=1 for truecolor
+
+    local $img = GD::Simple->new($width,$height,1);
+    $img->copy($img_background,0,0,0,0,$width,$height);
+
+#add grid
+    &placeGrid($width,$height,$xgridsize,$ygridsize);
+
+#colors
+#$black = $img->colorAllocate(0,0,0);
+#$red = $img->colorAllocate(255,0,0);
+$blue = $img->colorAllocate(0,0,255);
+#$green = $img->colorAllocate(0,255,0);
+#$yellow = $img->colorAllocate(255,250,205);
+
+local @input=split(/\n/,$webinput);
 
 foreach my $line (@input){
 	my @items=split(/\t/,$line);
@@ -96,39 +119,27 @@ foreach my $line (@input){
 		$upg="";
 	}
 	
+	my %config;
 
+	if($color ne ""){
+		$config{$sector}{$color}="";
+	}	
+	if($icon ne ""){
+		$config{$sector}{$icon}="";
+	}
+	if($upg ne ""){
+		$config{$sector}{$upg}="";
+	}	
+	if($num ne ""){
+		$config{$sector}{$num}="";
+	}
 
-
+	&placeOctagon($x,$y,\%config);
 
 
 
 }
 
-
-#output filehandle
-    open(OUTPUTPNG,">$outputpng");
-
-#create an image same size as the background and place background on it
-    my $img_background = newFromGif GD::Image($background);
-    ($width,$height)=$img_background->getBounds();
-    # create a new image
-        #third arg=1 for truecolor
-
-    local $img = GD::Simple->new($width,$height,1);
-    $img->copy($img_background,0,0,0,0,$width,$height);
-
-#add grid
-    &placeGrid($width,$height,$xgridsize,$ygridsize);
-
-#colors
-#$black = $img->colorAllocate(0,0,0);
-#$red = $img->colorAllocate(255,0,0);
-$blue = $img->colorAllocate(0,0,255);
-#$green = $img->colorAllocate(0,255,0);
-#$yellow = $img->colorAllocate(255,250,205);
-
-print $input;
-print "hihihihihi";
 
 
 
