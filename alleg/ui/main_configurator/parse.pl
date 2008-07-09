@@ -3,13 +3,31 @@
 use Data::Dumper;
 use CGI qw(:standard);
 
-require "/home/jctong/workarea/svn/alleg/ui/main_configurator/testoct.pm";
+#require "/home/jctong/workarea/svn/alleg/ui/main_configurator/testoct.pm";
+require "/home/jctong/gitrepository/svn/alleg/ui/main_configurator/testoct.pm";
 
 print header,start_html;
 
 $a=param('data');
 
+
+	open(BACKGROUND,"/home/jctong/gitrepository/svn/alleg/ui/main_configurator/constellation_background_image.gif");
+	my $img_background = newFromGif GD::Image(\*BACKGROUND); 
+	close(BACKGROUND);
+	my ($width,$height)=$img_background->getBounds();
+	$img=GD::Simple->new($width,$height,1);
+	$img->copy($img_background,0,0,0,0,$width,$height);
+
+	$xgridsize=75;
+	$ygridsize=75;
+	
+	&placeGrid($width,$height,$xgridsize,$ygridsize);
+	$blue=$img->colorAllocate(0,0,255);
+
 &main($a);
+
+print "<img src='/output.png' width='100%'>";
+
 
 print end_html;
 
@@ -21,23 +39,25 @@ sub main{
 	my($webinput)=@_;	
 	local @input=split(/\n/,$webinput);
 
-	my $background="constellation_background_image.gif";
-	local $xgridsize=75;
-	local $ygridsize=75;
-	local %componentDB=&createComponentDB;
-	open(OUTPUTPNG,">output.png");
-	my $img_background = newFromGif GD::Image($background); 
-	my ($width,$height)=$img_background->getBounds();
-	local $img=GD::Simple->new($width,$height);
-	#&placeGrid($width,$height,$xgridsize,$ygridsize);
-	$blue=$img->colorAllocate(0,0,255);
+#	my $background="constellation_background_image.gif";
+#	local $xgridsize=75;
+#	local $ygridsize=75;
+	open(OUTPUTPNG,">/var/www/output.png") or die('cant output');
 
+#	my $img_background = newFromGif GD::Image($background); 
+#	my ($width,$height)=$img_background->getBounds();
+#	local $img=GD::Simple->new($width,$height);
+#	#&placeGrid($width,$height,$xgridsize,$ygridsize);
+#	$blue=$img->colorAllocate(0,0,255);
 
-
+	my %componentDB=&createComponentDB;
 	my %config;
+	my $msettings;
+	my ($exp,$tac,$sup,$min,$tr,$t,$r,$s);
+	my ($savetr,$savet,$saver,$saves);
 	
 	foreach my $line (@input){
-		my($x,$y,$sector,$icon,$color,$num,$upg,$exp,$tac,$sup,$min,$tr,$t,$r,$s);
+		my($x,$y,$sector,$icon,$color,$num,$upg);
 		my @items=split(/\t/,$line);
 		$x=$items[0];
 		$y=$items[1];
@@ -54,7 +74,6 @@ sub main{
 		$t=$items[12];
 		$r=$items[13];
 		$s=$items[14];
-	
 		if($icon=~/baseicon/i){
 			$icon="BaseIcon";
 		}elsif($icon=~/garr/i){
@@ -67,6 +86,8 @@ sub main{
 			$icon="Sup";
 		}elsif($icon=~/tac/i){
 			$icon="Tac";
+		}elsif($icon=~/emti/i){
+			$icon="EmptyMoneyTechIcons";
 		}else{
 			$icon="";
 		}
@@ -106,17 +127,41 @@ sub main{
 		if($num ne ""){
 			$config{$sector}{$num}="";
 		}
-		print "$sector<br>";
-		if($sector==8){
-			print Dumper(\%config);	
-			&placeOctagon(10,10,\%config);
-			
 
+		if($exp==1){
+			$msettings=$msettings."exp ";
+		}
+		if($tac==1){
+			$msettings=$msettings."tac ";
+		}
+		if($sup==1){
+			$msettings=$msettings."sup ";
+		}
+		if($min==1){
+			$msettings=$msettings."min ";
+		}
+		if($tr ne ""){
+			$savetr=$tr;
+		}
+		if($t ne ""){
+			$savet=$t;
+		}
+		if($r ne ""){
+			$saver=$r;
+		}
+		if($s =~ /(\d)/){
+			$saves=$1;
+		}
+		if($sector==8){
+			&placeOctagon($x,$y,\%config,\%componentDB);
+			&moneysetting($x,$y,$msettings,$savetr,$savet,$saver,$saves);	
 			%config=();
+			$msettings="";
+			($exp,$tac,$sup,$min,$tr,$t,$r,$s)=0;
+			($savetr,$savet,$saver,$saves)=0;
 		}	
 	}
 
-#place a test octagon
 print OUTPUTPNG $img->png;
 
 }
