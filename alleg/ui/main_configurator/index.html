@@ -7,9 +7,13 @@
 <br>
 <br>
 <br>
-<form action="/cgi-bin/afcmg/parse.pl" method="post">
+<form action="/cgi-bin/afcmg/parse.pl" method="post" enctype="multipart/form-data">
 
-<input type="checkbox" name="gridlines">gridlines
+<input type="checkbox" name="gridlines">enable gridlines
+<br>
+<br>
+use your own png background (optional)<br>
+<input type="file" name="newbackground" accept="image/png">
 <br>
 <br>
 enter mapping data below
