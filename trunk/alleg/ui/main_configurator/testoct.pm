@@ -77,7 +77,6 @@ use GD::Simple;
 
 sub moneysetting(){
         my ($x,$y,$category,$tr,$t,$r,$s)=@_;
-
     	my $x1=$x*$xgridsize;
     	my $y1=$y*$ygridsize;
 	
@@ -127,17 +126,17 @@ sub moneysetting(){
 
 
 sub placeOctagon{
-    my($x,$y,$config)=@_;
+    my($x,$y,$config,$componentDB)=@_;
     my $x1=$x*$xgridsize;
     my $y1=$y*$ygridsize;
-
-    $img->copy(newFromGif GD::Image('blancOctagon.gif'),$x1,$y1,0,0,300,300);
+    $img->copy(newFromGif GD::Image('/home/jctong/gitrepository/svn/alleg/ui/main_configurator/blancOctagon.gif'),$x1,$y1,0,0,300,300);
 
     #color triangles first, delete from %config after coloring
     foreach my $sector (keys %$config){
 	foreach my $modifier (keys %{$$config{$sector}}){
 	    if($modifier =~/Blue|Yellow|Grey/ ){
-		$img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
+
+		$img->copy(newFromGif GD::Image($$componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
 		delete $$config{$sector}{$modifier};
 	    }
 	}
@@ -146,13 +145,13 @@ sub placeOctagon{
     #place remaining icon components
     foreach my $sector (keys %$config){
 	foreach my $modifier (keys %{$$config{$sector}}){
-	    $img->copy(newFromGif GD::Image($componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
+	    $img->copy(newFromGif GD::Image($$componentDB{$sector}{$modifier}),$x1,$y1,0,0,300,300);
 	}
     }
 }
 
 sub createComponentDB{
-    my @components=<sector*.gif>;
+    my @components=</home/jctong/gitrepository/svn/alleg/ui/main_configurator/sector*.gif>;
     my %components;
 
     foreach my $file (@components){
