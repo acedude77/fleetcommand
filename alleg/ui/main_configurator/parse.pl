@@ -9,7 +9,7 @@ require "/home/jctong/workarea/afcmg/testoct.pm";
 print header,start_html;
 
 $a=param('data');
-
+$gridlines=param('gridlines');
 
 	open(BACKGROUND,"/home/jctong/workarea/afcmg/constellation_background_image.gif");
 	my $img_background = newFromGif GD::Image(\*BACKGROUND); 
@@ -21,7 +21,9 @@ $a=param('data');
 	$xgridsize=75;
 	$ygridsize=75;
 	
-	&placeGrid($width,$height,$xgridsize,$ygridsize);
+	if($gridlines){
+		&placeGrid($width,$height,$xgridsize,$ygridsize);
+	}
 	$blue=$img->colorAllocate(0,0,255);
 
 &main($a);
