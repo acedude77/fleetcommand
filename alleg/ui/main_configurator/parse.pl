@@ -4,14 +4,14 @@ use Data::Dumper;
 use CGI qw(:standard);
 
 #require "/home/jctong/workarea/svn/alleg/ui/main_configurator/testoct.pm";
-require "/home/jctong/gitrepository/svn/alleg/ui/main_configurator/testoct.pm";
+require "/home/jctong/workarea/afcmg/testoct.pm";
 
 print header,start_html;
 
 $a=param('data');
 
 
-	open(BACKGROUND,"/home/jctong/gitrepository/svn/alleg/ui/main_configurator/constellation_background_image.gif");
+	open(BACKGROUND,"/home/jctong/workarea/afcmg/constellation_background_image.gif");
 	my $img_background = newFromGif GD::Image(\*BACKGROUND); 
 	close(BACKGROUND);
 	my ($width,$height)=$img_background->getBounds();
@@ -26,7 +26,7 @@ $a=param('data');
 
 &main($a);
 
-print "<img src='/output.png' width='100%'>";
+print "<img src='/afcmg/output.png' width='100%'>";
 
 
 print end_html;
@@ -42,7 +42,7 @@ sub main{
 #	my $background="constellation_background_image.gif";
 #	local $xgridsize=75;
 #	local $ygridsize=75;
-	open(OUTPUTPNG,">/var/www/output.png") or die('cant output');
+	open(OUTPUTPNG,">/var/www/afcmg/output.png") or die('cant output');
 
 #	my $img_background = newFromGif GD::Image($background); 
 #	my ($width,$height)=$img_background->getBounds();

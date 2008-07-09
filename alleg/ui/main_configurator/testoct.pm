@@ -129,7 +129,7 @@ sub placeOctagon{
     my($x,$y,$config,$componentDB)=@_;
     my $x1=$x*$xgridsize;
     my $y1=$y*$ygridsize;
-    $img->copy(newFromGif GD::Image('/home/jctong/gitrepository/svn/alleg/ui/main_configurator/blancOctagon.gif'),$x1,$y1,0,0,300,300);
+    $img->copy(newFromGif GD::Image('/home/jctong/workarea/afcmg/blancOctagon.gif'),$x1,$y1,0,0,300,300);
 
     #color triangles first, delete from %config after coloring
     foreach my $sector (keys %$config){
@@ -151,7 +151,7 @@ sub placeOctagon{
 }
 
 sub createComponentDB{
-    my @components=</home/jctong/gitrepository/svn/alleg/ui/main_configurator/sector*.gif>;
+    my @components=</home/jctong/workarea/afcmg/sector*.gif>;
     my %components;
 
     foreach my $file (@components){
