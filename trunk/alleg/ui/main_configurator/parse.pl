@@ -24,7 +24,9 @@ $gridlines=param('gridlines');
 	if($gridlines){
 		&placeGrid($width,$height,$xgridsize,$ygridsize);
 	}
+
 	$blue=$img->colorAllocate(0,0,255);
+	$black=$img->colorAllocate(0,0,0);
 
 &main($a);
 
@@ -76,6 +78,13 @@ sub main{
 		$t=$items[12];
 		$r=$items[13];
 		$s=$items[14];
+
+		#draw lines first (before octagons)
+		if($sector==0){
+			drawLine($x,$y,$icon,$color);
+			next;
+		}
+
 		if($icon=~/baseicon/i){
 			$icon="BaseIcon";
 		}elsif($icon=~/garr/i){
