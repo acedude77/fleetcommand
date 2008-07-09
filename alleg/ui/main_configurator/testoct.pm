@@ -35,7 +35,7 @@ use GD::Simple;
 #    &placeGrid($width,$height,$xgridsize,$ygridsize);
 #
 ##colors
-##$black = $img->colorAllocate(0,0,0);
+#$black = $img->colorAllocate(0,0,0);
 ##$red = $img->colorAllocate(255,0,0);
 #$blue = $img->colorAllocate(0,0,255);
 ##$green = $img->colorAllocate(0,255,0);
@@ -74,6 +74,29 @@ use GD::Simple;
 #    	print OUTPUTPNG $img->png;
 #
 #}
+
+sub drawLine{
+	my($x,$y,$x1,$y1)=@_;
+	my($cx,$cy,$cx1,$cy1);
+	#line thickness in pixels
+	$img->penSize(4);
+	$img->fgcolor('black');
+	#center of octagon is +2*xgridsize, -2*ygridsize from octagon's origin
+	#actually it should be width(blankOctagon.gif) but 
+	#we're just going to cheat here
+
+
+	$cx=$x*$xgridsize+2*$xgridsize;		
+	$cx1=$x1*$xgridsize+2*$xgridsize;
+	$cy=$y*$ygridsize+2*$ygridsize;
+	$cy1=$y1*$ygridsize+2*$ygridsize;
+	
+	$img->moveTo($cx,$cy);
+	$img->lineTo($cx1,$cy1);
+	$img->penSize(1);
+}
+
+
 
 sub moneysetting(){
         my ($x,$y,$category,$tr,$t,$r,$s)=@_;
@@ -160,7 +183,6 @@ sub createComponentDB{
     }
     return %components;
 }
-
 
 sub placeGrid{
     my ($width,$height,$xstep,$ystep)=@_;
