@@ -1,25 +1,37 @@
 #!/usr/bin/perl -w
 
 use GD;
-my $height=200;
-my $width=200;
-my $xgridsize=10;
-my $ygridsize=10;
+use CGI qw(:standard);
 
-my $img = new GD::Image($height,$width,1);
+my $height=param('height');
+my $width=param('width');
+my $stars=param('stars');
+
+my $img = new GD::Image($width,$height,1);
+
 my $black=$img->colorAllocate(0,0,0);
-$img->fill(0,0,$black);
+my $white=$img->colorAllocate(255,255,255);
 
-my $stars=30;
+$img->fill(0,0,$black);
 
 while($stars > 0){
 	my $xrand=rand($width+1);
 	my $yrand=rand($height+1);
+	my $size=rand(5);
+
+	$color=$img->colorAllocate(rand(256),rand(256),rand(256));
+	
+	$img->filledEllipse($xrand,$yrand,$size,$size,$color);
+	$stars--;
+}
 
 
 
 
-
-open(OUTPUTPNG,">output.png");
+open(OUTPUTPNG,">/var/www/rsmg/output.png") or die "$!";
 print OUTPUTPNG $img->png;
 close OUTPUTPNG;
+
+print header,start_html;
+print "<img src='/rsmg/output.png'>";
+print end_html;
