@@ -1,29 +1,28 @@
-<!-- You can put comments within brackets like this -->
-<img src="pic.jpg" border=0 usemap="#mymap">
+<html>
+<head>
+<script language="JavaScript">
+function point_it(event){
+    pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+    pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+    document.getElementById("square").style.left = (pos_x-15) ;
+    document.getElementById("square").style.top = (pos_y-15) ;
+    document.getElementById("square").style.visibility = "visible" ;
+    document.pointform.form_x.value = pos_x;
+    document.pointform.form_y.value = pos_y;
+}
+</script>
 
-<!-- add or delete the elements below with your own shapes (i.e. rectangles, circles, etc.) -->
-<!-- replace the coordinates and URLs below with your own values -->
-<map name="mymap">
-<!-- sample rectangle1 -->
-<area shape=rect coords="90,77,124,112" href="http://www.whatever_you_want.com/to_point/to1.html">
-<!-- sample rectangle2 -->
-<area shape=rect coords="170, 78,200, 112" href="http://www.whatever_you_want.com/to_point/to2.html">
-<!-- sample rectangle3 -->
-<area shape=rect coords="234, 103,264, 138" href="http://www.whatever_you_want.com/to_point/to3.html">
-<area shape=rect coords="310, 85,348, 123 " href="">
-<area shape=rect coords="383, 75,414, 108 " href="">
-<area shape=rect coords="453, 95,482, 129 " href="">
-<area shape=rect coords="489, 104,520, 141 " href="">
-<area shape=rect coords="154, 163,189, 199 " href="">
-<area shape=rect coords="199, 170,230, 202 " href="">
-<area shape=rect coords="271, 166,303, 201 " href="">
-<area shape=rect coords="425, 179,459, 212 " href="">
-<area shape=rect coords="521, 180,555, 212 " href="">
-<area shape=rect coords="200, 223,232, 246 " href="">
-<area shape=rect coords="259, 219,291, 247 " href="">
-<area shape=rect coords="423, 243,459, 268 " href="">
-<area shape=rect coords="549, 224,584, 251 " href="">
-<area shape=rect coords="335, 163,376, 204 " href="">
-<!-- everywhere else -->
-<area shape=default href="http://www.whatever_you_want.com/to_point/default.html">
-</map>
+</head>
+
+<body>
+<form name="pointform" method="post" action="./cgi-bin/storeinfo.pl">
+<div id="pointer_div" onclick="point_it(event)" style = "background-image:url('pic.jpg');background-repeat:no-repeat;height:100%;">
+<img src="square.gif" id="square" style="position:relative;visibility:hidden;z-index:2;filter:alpha(opacity=40);opacity:0.4;">
+</div>
+You pointed on x = <input type="text" name="form_x" size="4" /> - y = <input type="text" name="form_y" size="4" />
+<input type="text" name="name">
+<input type="submit">
+
+</form>
+</body>
+</html>
