@@ -1,4 +1,0 @@
-partial public class
-jctong@borg-cube:~/allen$ find . -wholename '*.svn'  -exec rm -rf '{}' \;
-find ./trunk/ -type f -name *.js >> biglist
-

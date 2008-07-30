@@ -1,6 +1,0 @@
-unzip 3_results.zip
-
-3.commented 	commented lines
-3.exptbl	lines with exptbl
-3.jaclass	lines with properly form class
-3.output	lines with improperly formed class
