@@ -1,0 +1,30 @@
+biglist: list of all *.aspx, *.asp, *.html, *.htm, *.vb, *.cs, *.master, *.css, *.js
+listofall_cs_vb: list of all *.cs, *.vb
+class_list: all /public class/ found inside listofall_cs_vb
+
+2nd run:
+jctong@borg-cube:~/allen$ wc 2.*
+   6969   68716 1012394 2.baddies
+   6672   82101 1833893 2.commented
+  25807  199732 3373633 2.output
+  39448  350549 6219920 total
+jctong@borg-cube:~/allen$ wc output 
+  39448  350549 6218351 output
+
+2.baddies: classes missing ja, matching on <space>,(,[
+2.commented: lines that were commented out
+2.output: remaining lines that matched className
+
+3rd run:
+
+   3238   34463  483055 3.baddies
+   5514   51543  736112 3.commented
+  28446  244353 4464005 3.fake
+   4611   30748  664760 3.jaclassname
+   1786   14428  390521 3.output
+  43595  375535 6738453 total
+
+
+3.fake: lines that contain stuff like aaaclassName or classNameaaa
+3.output: everything that remains to be sorted
+3.jaclassname: lines that have properly formed classes
