@@ -195,7 +195,7 @@ sub placeGrid{
 	if(($x%5)==0){
 	    $img->fgcolor('white');
 	}else{
-	    $img->fgcolor('black');
+	    $img->fgcolor('red');
 	}
 	$img->moveTo($xstep*$x,0);
 	$img->lineTo($xstep*$x,$height);
@@ -211,7 +211,7 @@ sub placeGrid{
         if(($y%5)==0){
 	    $img->fgcolor('white');
         }else{
-	    $img->fgcolor('black');
+	    $img->fgcolor('red');
         }
 	$img->moveTo(0,$ystep*$y);
 	$img->lineTo($width,$ystep*$y);
