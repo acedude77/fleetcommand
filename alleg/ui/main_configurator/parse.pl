@@ -7,6 +7,8 @@ use CGI qw(:standard);
 #require "/home/jctong/workarea/svn/alleg/ui/main_configurator/testoct.pm";
 require "/home/jctong/workarea/afcmg/testoct.pm";
 
+print header,start_html;
+
 #file upload
 $CGI::POST_MAX=1024*5000;
 my $safe_filename_characters = "a-zA-Z0-9_.-";
@@ -26,8 +28,6 @@ if($newbackground ne ""){
 	close NEWBACKGROUND;
 }
 
-
-print header,start_html;
 
 $a=param('data');
 $gridlines=param('gridlines');
