@@ -9,57 +9,9 @@ require "/home/jctong/workarea/afcmg/testoct.pm";
 
 print header,start_html;
 
-#file upload
-$CGI::POST_MAX=1024*5000;
-my $safe_filename_characters = "a-zA-Z0-9_.-";
-my $upload_dir="/var/www/afcmg/tmp";
-$newbackground=param("newbackground");
-if($newbackground ne ""){
-	my($name,$path,$extension)=fileparse($newbackground, '\..*');
-	$newbackground=$name.$extension;
-	$newbackground=~tr/ /_/;
-	$newbackground=~s/[^$safe_filename_characters]//g;
-	$newbackgroundfh=upload("newbackground");
-	open(NEWBACKGROUND,">$upload_dir/$newbackground") or die "$!";
-	binmode NEWBACKGROUND;
-	while(<$newbackgroundfh>){
-		print NEWBACKGROUND;
-	}
-	close NEWBACKGROUND;
-}
-
-
 $a=param('data');
-$gridlines=param('gridlines');
-
-if($newbackground eq ""){
-	open(BACKGROUND,"/home/jctong/workarea/afcmg/constellation_background_image.gif");
-	$img_background = newFromGif GD::Image(\*BACKGROUND); 
-	close(BACKGROUND);
-}else{
-	open(BACKGROUND,"/$upload_dir/$newbackground");
-	$img_background = newFromPng GD::Image(\*BACKGROUND); 
-	close(BACKGROUND);
-}
-
-	my ($width,$height)=$img_background->getBounds();
-	$img=GD::Simple->new($width,$height,1);
-	$img->copy($img_background,0,0,0,0,$width,$height);
-
-	$xgridsize=75;
-	$ygridsize=75;
-	
-	if($gridlines){
-		&placeGrid($width,$height,$xgridsize,$ygridsize);
-	}
-
-	$blue=$img->colorAllocate(0,0,255);
-	$black=$img->colorAllocate(0,0,0);
 
 &main($a);
-
-print "<img src='/afcmg/output.png' width='100%'>";
-
 
 print end_html;
 
