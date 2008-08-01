@@ -1,4 +1,1 @@
-<area shape=rect coords="338,167,369,196" alt="mrs. giddings">
-<area shape=rect coords="170,79,201,108" alt="jc">
-<area shape=rect coords="157,164,188,193" alt="belinda">
-<area shape=rect coords="268,173,299,202" href="javascript:alert('aaaa')">
+<area shape=rect coords="158,167,189,196" href="javascript:alert('belinda')">
