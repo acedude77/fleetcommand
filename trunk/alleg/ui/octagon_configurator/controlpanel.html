@@ -1,33 +1,16 @@
 <html>
 <head>
-<script language="JavaScript">
-function point_it(event){
-    pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
-    pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
-    document.getElementById("square").style.left = (pos_x-15) ;
-    document.getElementById("square").style.top = (pos_y-15) ;
-    document.getElementById("square").style.visibility = "visible" ;
-    document.pointform.form_x.value = pos_x;
-    document.pointform.form_y.value = pos_y;
-}
-</script>
 </head>
 
 <body>
-<form name="pointform" method="post" action="./cgi-bin/config.pl">
-<div id="pointer_div" onClick="point_it(event)" style = "background-image:url('./aw5mapdone1024bc1.png');background-repeat:no-repeat;height:783px;width:1024px;float:left;clear:both;">
-<img src="square.gif" id="square" style="position:relative;visibility:hidden;z-index:2;filter:alpha(opacity=40);opacity:0.4;">
+<form name="cp">
+<div id="cursor_status">
+You pointed on x = <input type="text" name="form_x" size="4" /> - y = <input type="text" name="form_y" size="4" />
 </div>
 
-
-
-x = <input type="text" name="form_x" size="4" />
-<br>
-y = <input type="text" name="form_y" size="4" />
-<br>
 location: <input type="text" name="location">
 <br>
-<select name="sector">
+<select>
 	<option value='sector1'>Sector 1</option>
 	<option value='sector2'>Sector 2</option>
 	<option value='sector3'>Sector 3</option>
