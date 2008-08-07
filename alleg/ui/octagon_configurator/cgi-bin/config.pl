@@ -13,7 +13,7 @@ my $sth=$dbh->prepare('select sector_name,location from afcoc');
 $sth->execute();
 
 while(@row=$sth->fetchrow_array()){
-	
+	$loc{"$row[1]"}=$row[0];	
 }
 
 print header;
@@ -119,7 +119,16 @@ $upg2=param('upg2');
 #$y2=$y+14;
 
 
-print "<div>$x $y</div>";
+foreach $xy (keys(%loc)){
+	($loc_x,$loc_y)=split(/,/,$xy);
+	$delta_x=abs($loc_x - $x);
+	$delta_y=abs($loc_y - $y);
+	if(($delta_x < 15) && ($delta_y < 15)){
+		$sector_name=$loc{"$loc_x,$loc_y"};
+	}
+}
+
+print "<div>$x $y $sector_name</div>";
 
 open(OUTPUT,">>output.txt");
 
