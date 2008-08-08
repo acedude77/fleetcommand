@@ -59,3 +59,4 @@
 <area shape=rect coords="683,58" href="javascript:alert('sector1')">
 <area shape=rect coords="683,58" href="javascript:alert('sector1')">
 <area shape=rect coords="886,309" href="javascript:alert('sector1')">
+<area shape=rect coords="518,126" href="javascript:alert('sector1')">
