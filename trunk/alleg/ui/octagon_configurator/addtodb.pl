@@ -13,11 +13,15 @@ my $sth=$dbh->prepare('update afcoc set location=? where sector_name=?');
 
 open(INPUT,"locations.txt");
 while(defined(my $line=<INPUT>)){
+	@temp=split(/\s/,$line);
+	$coords=pop(@temp);
 
-	($a,$b)=split(/\s/,$line);
-	$coords=$b;
-	$sector_name=$a;
-	$sector_name=ucfirst($sector_name);
+	foreach $item (@temp){
+		$x=ucfirst($item);
+		push(@fixed,$x);
+	}
+	$sector_name="@fixed";
+	undef(@fixed);
 	print "$coords $sector_name\n";	
 	$sth->execute($coords,$sector_name);
 
