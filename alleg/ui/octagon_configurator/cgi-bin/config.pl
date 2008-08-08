@@ -37,7 +37,7 @@ function point_it(event){
 
 <body>
 <form name="pointform" method="post" action="config.pl">
-<div id="pointer_div" onClick="point_it(event)" style = "background-image:url('./aw5mapdone1024bc1.png');background-repeat:no-repeat;height:783px;width:1024px;float:left;clear:both;">
+<div id="pointer_div" onClick="point_it(event)" style = "background-image:url('./AW5Map1024.png');background-repeat:no-repeat;height:783px;width:1024px;float:left;clear:both;">
 <img src="./square.gif" id="square" style="position:relative;visibility:hidden;z-index:2;filter:alpha(opacity=40);opacity:0.4;">
 </div>
 
@@ -49,46 +49,20 @@ y = <input type="text" name="form_y" size="4" />
 <br>
 location: <input type="text" name="location">
 <br>
-<select name="sector">
-	<option value='sector1'>Sector 1</option>
-	<option value='sector2'>Sector 2</option>
-	<option value='sector3'>Sector 3</option>
-	<option value='sector4'>Sector 4</option>
-	<option value='sector5'>Sector 5</option>
-	<option value='sector6'>Sector 6</option>
-	<option value='sector7'>Sector 7</option>
-	<option value='sector8'>Sector 8</option>
-</select>
+Available Techs<br>
+<input type="checkbox" name="tac" value="1"> Tac
 <br>
-<input type="radio" name="color" value="blue"> Blue
+<input type="checkbox" name="exp" value="1"> Exp
 <br>
-<input type="radio" name="color" value="yellow"> Yellow
+<input type="checkbox" name="sup" value="1"> Sup
 <br>
-<input type="radio" name="color" value="grey"> Grey
+Treasures: <input type="input" name="treasures" size="2" maxlength="2">
 <br>
-
-
-<input type="checkbox" name="baseicon" value="1"> Base Icon
+Starting Cash: <input type="input" name="starting_cash" size="2" maxlength="2">
 <br>
-<input type="checkbox" name="constructor" value="1">Constructor
+Total Cash: <input type="input" name="total_cash" size="2" maxlength="2">
 <br>
-<input type="checkbox" name="one" value="1">One
-<br>
-<input type="checkbox" name="two" value="1">Two
-<br>
-<input type="checkbox" name="outpost" value="1">Outpost
-<br>
-<input type="checkbox" name="shipyard" value="1">Shipyard
-<br>
-<input type="checkbox" name="sup" value="1">Sup
-<br>
-<input type="checkbox" name="tac" value="1">Tac
-<br>
-<input type="checkbox" name="garr" value="1">Garr
-<br>
-<input type="checkbox" name="Upg I" value="1">Upgrade I
-<br>
-<input type="checkbox" name="Upg II" value="1">Upgrade II
+Resources: <input type="input" name="resources" size="2" maxlength="2">
 <br>
 
 <input type="submit">

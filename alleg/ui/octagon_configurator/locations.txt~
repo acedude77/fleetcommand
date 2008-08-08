@@ -6,11 +6,11 @@ rhea 422,167
 pook 603,168
 mars 695,168
 fwiffo 144,214
-despina 234,214
+yavin 234,214
 triton 470,214
 oberon 557,214
 venus 792,214
-cowbell 882,214
+andon 882,214
 ariel 140,307
 callisto 237,307
 pan 422,307
@@ -20,7 +20,7 @@ atlas 792,308
 metis 882,308
 freebeer 94,400
 thrale 330,400
-lyra 422,400
+despina 422,400
 thebe 605,400
 gobo 695,400
 optimus 930,400
@@ -28,7 +28,7 @@ solap 144,492
 helios 237,492
 denom 422,492
 leda 514,492
-yavin 605,492
+peet 605,492
 rigel 792,492
 umbriel 882,492
 pluto 144,586
@@ -37,10 +37,6 @@ phobos 468,586
 charon 558,586
 arisia 792,586
 sp4wn 882,586
-neptune 330,633
-io 423,633
-gala 605,633
-velantia 696,633
 thalgor 94,679
 jupiter 514,679
 delgon 932,679
