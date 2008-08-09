@@ -104,7 +104,7 @@ foreach $xy (keys(%loc)){
 
 print "<div>$x $y $sector_name</div>";
 
-open(OUTPUT,">>output.txt");
+#open(OUTPUT,">>output.txt");
 
 #print OUTPUT qq^<area shape=rect coords=\"$x1,$y1,$x2,$y2\" href="javascript:alert('$sector')">\n^;
 print OUTPUT qq^<area shape=rect coords=\"$x,$y\" href="javascript:alert('$sector')">\n^;

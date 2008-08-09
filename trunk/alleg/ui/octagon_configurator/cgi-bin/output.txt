@@ -100,3 +100,7 @@
 <area shape=rect coords="148,310" href="javascript:alert('sector1')">
 <area shape=rect coords="884,314" href="javascript:alert('')">
 <area shape=rect coords="884,314" href="javascript:alert('')">
+<area shape=rect coords="700,401" href="javascript:alert('')">
+<area shape=rect coords="424,168" href="javascript:alert('')">
+<area shape=rect coords="430,173" href="javascript:alert('')">
+<area shape=rect coords="886,489" href="javascript:alert('')">
