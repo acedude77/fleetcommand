@@ -102,6 +102,7 @@ sub moneysetting(){
         my ($x,$y,$category,$tr,$t,$r,$s)=@_;
     	my $x1=$x*$xgridsize;
     	my $y1=$y*$ygridsize;
+
 	
 	if($category=~/tac/){
 		$img->fill(196+$x1,157+$y1,$blue);
@@ -113,6 +114,58 @@ sub moneysetting(){
         	$img->fill(196+$x1,169+$y1,$blue);
 	}
 	if($category=~/min/){
+        	$img->fill(209+$x1,169+$y1,$blue);
+	}
+
+
+#tr
+	my $k=0;
+	while($tr>0){
+        	$img->fill(223+$x1,157+($k*6)+$y1,$blue);
+        	$tr--;$k++;
+	}
+
+
+#t
+	$k=0;
+	while($t>0){
+        	$img->fill(235+$x1,157+($k*6)+$y1,$blue);
+        	$t--;$k++;
+	}
+
+#r
+	$k=0;
+	while($r>0){
+        	$img->fill(247+$x1,157+($k*6)+$y1,$blue);
+        	$r--;$k++;
+	}
+
+#s
+	$k=0;
+	while($s>0){
+        	$img->fill(259+$x1,157+($k*6)+$y1,$blue);
+        	$s--;$k++;
+	}
+}
+
+
+sub moneysetting2(){
+	my $blue = $img->colorAllocate(0,0,255);
+        my ($x1,$y1,$category,$tr,$t,$r,$s)=@_;
+#    	my $x1=$x*$xgridsize;
+#    	my $y1=$y*$ygridsize;
+
+	
+	if($category=~/tac/i){
+		$img->fill(196+$x1,157+$y1,$blue);
+	}
+	if($category=~/exp/i){
+        	$img->fill(196+$x1,163+$y1,$blue);
+	}
+	if($category=~/sup/i){
+        	$img->fill(196+$x1,169+$y1,$blue);
+	}
+	if($category=~/min/i){
         	$img->fill(209+$x1,169+$y1,$blue);
 	}
 
