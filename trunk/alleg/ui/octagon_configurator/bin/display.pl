@@ -45,8 +45,19 @@ $output2 = <<END2;
 <body>
 
 <img src="../AW5Map1024.png" usemap="#map1" border="0" height="793px" width="1024px">
-<img name="holder" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">  
+<img name="holder" usemap="#map2" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">  
 
+<map name="map2">
+<area shape="poly" coords="100,100,100,0,175,25" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,200,100,200,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,200,100,200,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,100,200,200,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,100,200,0,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,0,100,0,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,0,100,0,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,100,0,0,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+<area shape="poly" coords="100,100,0,100,0,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
+</map>
 
 
 <map name="map1">
