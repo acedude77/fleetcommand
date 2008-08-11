@@ -6,8 +6,55 @@
 <!-- Drag and Drop source file --> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/dragdrop/dragdrop-min.js" ></script>
 
+
+<script type="text/javascript">
+    (function() {
+        var dd, dd2, dd3;
+        YAHOO.util.Event.onDOMReady(function() {
+            dd = new YAHOO.util.DD("dd-demo-1");
+            dd2 = new YAHOO.util.DD("dd-demo-2");
+            dd3 = new YAHOO.util.DD("dd-demo-3");
+        });
+    })();
+</script>
+
+<style type="text/css">
+
+.dd-demo {
+    position:relative;
+    border:4px solid #666;
+    text-align:center;
+    color:#fff;
+    cursor:move;
+    height:60px;
+    width:60px;
+}
+
+.dd-demo-em {
+    border:4px solid purple;
+}
+
+#dd-demo-1 { 
+    background-color:#6D739A;top:0px; left:105px;
+}
+
+#dd-demo-2 { 
+    background-color:#566F4E;top:50px; left:245px;
+}
+
+#dd-demo-3 {
+    background-color:#7E5B60;top:-150px; left:385px;
+}
+
+</style>
+
+
 </head>
 <body>
+<div id="dd-demo-1" class="dd-demo"></div>
+<div id="dd-demo-2" class="dd-demo"></div>
+<div id="dd-demo-3" class="dd-demo"></div>
+
 
 </body>
 </html>
