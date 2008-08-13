@@ -45,7 +45,7 @@ $output2 = <<END2;
 <body>
 
 <img style="position:absolute;float:left;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
-<img style="position:relative;float:right;" name="holder" usemap="#map2" id="holder" src="../iblancOctagon.gif" width="200" height="200" border="0" alt="Holder">
+<img style="position:relative;float:left;background-color:#FFFFFF" name="holder" usemap="#map2" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">
 
 
 <map name="map2">
