@@ -45,25 +45,7 @@ $output2 = <<END2;
 <body>
 
 <img style="position:absolute;float:left;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
-<img style="position:relative;float:left;background-color:#FFFFFF" name="holder" usemap="#map2" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">
-
-
-<map name="map2">
-
-
-<area shape="poly" coords="100,100,100,0,175,25" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,200,100,200,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,200,100,200,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,100,200,200,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,100,200,0,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,0,100,0,200" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,0,100,0,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,100,0,0,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-<area shape="poly" coords="100,100,0,100,0,0" onmouseover="changer('holder',1);" onmouseout="changer('holder',0);">
-
-
-</map>
-
+<img style="position:relative;float:left;background-color:#FFFFFF" name="holder" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">
 
 <map name="map1">
 
@@ -121,6 +103,7 @@ foreach $item (sort{$a<=>$b} keys %db){
 	$y1=$y-15;
 	$x2=$x+15;
 	$y2=$y+15;
-	print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" href="$db{$item}{map}" onmouseover="changer('holder',$item);" onmouseout="changer('holder',0);">\n/;
+	#print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" href="$db{$item}{map}" onclick="changer('holder',$item);" onmouseout="changer('holder',$item);">\n/;
+	print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" onclick="changer('holder',$item);" onmouseup="changer('holder',$item);">\n/;
 }
 print $output3;
