@@ -39,6 +39,7 @@ $output2 = <<END2;
   }
   //-->
 </SCRIPT>
+<script type="text/javascript" src="styleswitcher.js"></script>
 </head>
 
 
@@ -46,6 +47,10 @@ $output2 = <<END2;
 
 <img style="position:absolute;float:left;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
 <img style="position:relative;float:left;background-color:#FFFFFF" name="holder" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">
+<div style="clear:both;"></div>
+<a href="#" onclick="setActiveStyleSheet('default'); return false;">change style to default</a>
+<br>
+<a href="#" onclick="setActiveStyleSheet('paul'); return false;">change style to paul</a>
 
 <map name="map1">
 
