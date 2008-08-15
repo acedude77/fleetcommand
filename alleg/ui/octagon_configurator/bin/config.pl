@@ -33,6 +33,9 @@ function point_it(event){
     document.pointform.form_y.value = pos_y;
 }
 </script>
+<link rel="stylesheet" type="text/css" href="smaller.css" title="smaller" />
+<link rel="alternate stylesheet" type="text/css" href="original.css" title="original" />
+
 </head>
 
 <body>
