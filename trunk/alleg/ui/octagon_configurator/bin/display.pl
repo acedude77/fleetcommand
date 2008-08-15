@@ -40,17 +40,15 @@ $output2 = <<END2;
   //-->
 </SCRIPT>
 <script type="text/javascript" src="styleswitcher.js"></script>
+<link rel="stylesheet" type="text/css" href="smaller.css" title="smaller" />
+<link rel="alternate stylesheet" type="text/css" href="bigger.css" title="bigger" />
 </head>
 
 
 <body>
 
-<img style="position:absolute;float:left;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
-<img style="position:relative;float:left;background-color:#FFFFFF" name="holder" id="holder" src="../blancOctagon.gif" width="200" height="200" border="0" alt="Holder">
-<div style="clear:both;"></div>
-<a href="#" onclick="setActiveStyleSheet('default'); return false;">change style to default</a>
-<br>
-<a href="#" onclick="setActiveStyleSheet('paul'); return false;">change style to paul</a>
+<img style="position:absolute;left:210px;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
+<img class="octagon" name="holder" id="holder" src="../blancOctagon.gif" alt="Holder" onmouseover="setActiveStyleSheet('bigger');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
 <map name="map1">
 
