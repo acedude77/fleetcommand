@@ -36,6 +36,7 @@ use GD::Simple;
 #
 ##colors
 #$black = $img->colorAllocate(0,0,0);
+#$white = $img->colorAllocate(255,255,255);
 ##$red = $img->colorAllocate(255,0,0);
 #$blue = $img->colorAllocate(0,0,255);
 ##$green = $img->colorAllocate(0,255,0);
@@ -271,5 +272,11 @@ sub placeGrid{
 	$y++;
     }
 
+}
+
+sub labelsector(){
+	my ($x,$y,$sector_name)=@_;
+	my $black = $img->colorAllocate(0,0,0);
+	$img->string(gdSmallFont,$x,$y,$sector_name,$black);
 }
 1;
