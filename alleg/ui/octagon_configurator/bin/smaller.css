@@ -5,3 +5,17 @@ img.octagon {
 	float:left;
 	background-color:#FFFFFF;
 }
+div.controls {
+	white-space:nowrap;
+        width:195px;
+        height:490px;
+        top:310px;
+        position:absolute;
+        background-color:#FFFFFF;
+        border:1px solid #000000;
+}
+
+div.controltable {
+	width:195px;
+	overflow:hidden;
+}

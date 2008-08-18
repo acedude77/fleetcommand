@@ -42,13 +42,42 @@ $output2 = <<END2;
 <script type="text/javascript" src="styleswitcher.js"></script>
 <link rel="stylesheet" type="text/css" href="smaller.css" title="smaller" />
 <link rel="alternate stylesheet" type="text/css" href="bigger.css" title="bigger" />
+<link rel="alternate stylesheet" type="text/css" href="bigcontrol.css" title="bigcontrol" />
 </head>
 
 
 <body>
 
 <img style="position:absolute;left:210px;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
+<img style="position:absolute;left:210px;" src="../map1024tbak2.gif" usemap="#map1" border="0" height="793" width="1024">
+
 <img class="octagon" name="holder" id="holder" src="../blancOctagon.gif" alt="Holder" onmouseover="setActiveStyleSheet('bigger');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
+
+<div class="controls" onmouseover="setActiveStyleSheet('bigcontrol');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
+
+<div class="controltable">
+<table border="1">
+<tr><td>garrison</td></tr>
+<tr><td>light outpost</td></tr>
+<tr><td>outpost</td></tr>
+<tr><td>heavy outpost</td></tr>
+<tr><td>war factory</td></tr>
+<tr><td>intelligence agency</td></tr>
+<tr><td>research facility</td></tr>
+</table></div>
+
+<div class="controltable">
+<table border="1">
+<tr><th>color</th><td>yellow</td><td>blue</td></tr>
+<tr><th>upgrade</th><td>+0</td><td>+1</td><td>+2</td></tr>
+<tr><th>type</th><td>base</td><td>constructor</td></tr>
+</table>
+</div>
+
+
+
+</div>
+
 
 <map name="map1">
 
