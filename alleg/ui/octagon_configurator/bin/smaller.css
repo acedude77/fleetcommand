@@ -6,10 +6,11 @@ img.octagon {
 	background-color:#FFFFFF;
 }
 div.controls {
+	clear:both;
 	white-space:nowrap;
         width:195px;
         height:490px;
-        top:310px;
+        top:312px;
         position:absolute;
         background-color:#FFFFFF;
         border:1px solid #000000;
