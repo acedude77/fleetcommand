@@ -71,6 +71,7 @@ $output2 = <<END2;
 <tr><th>color</th><td>yellow</td><td>blue</td></tr>
 <tr><th>upgrade</th><td>+0</td><td>+1</td><td>+2</td></tr>
 <tr><th>type</th><td>base</td><td>constructor</td></tr>
+<tr><th>visibility</th><td>rebels</td><td>scions</td><td>both</td></tr>
 </table>
 </div>
 
