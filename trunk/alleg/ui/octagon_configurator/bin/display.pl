@@ -41,6 +41,7 @@ $output2 = <<END2;
 </SCRIPT>
 <script type="text/javascript" src="styleswitcher.js"></script>
 <link rel="stylesheet" type="text/css" href="smaller.css" title="smaller" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 <link rel="alternate stylesheet" type="text/css" href="bigger.css" title="bigger" />
 <link rel="alternate stylesheet" type="text/css" href="bigcontrol.css" title="bigcontrol" />
 </head>
@@ -56,30 +57,129 @@ $output2 = <<END2;
 <div class="controls" onmouseover="setActiveStyleSheet('bigcontrol');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
 <div class="controltable">
-<table border="1">
-<tr><td>garrison</td></tr>
-<tr><td>light outpost</td></tr>
-<tr><td>outpost</td></tr>
-<tr><td>heavy outpost</td></tr>
-<tr><td>war factory</td></tr>
-<tr><td>intelligence agency</td></tr>
-<tr><td>research facility</td></tr>
-</table></div>
-
+<a class="button" href="#"><span>Rebels</span></a> 
+<a class="button" href="#"><span>Scions</span></a> 
+<a class="button" href="#"><span>Both</span></a>
+</div>
+<div style="clear:both;"></div>
 <div class="controltable">
-<table border="1">
-<tr><th>color</th><td>yellow</td><td>blue</td></tr>
-<tr><th>upgrade</th><td>+0</td><td>+1</td><td>+2</td></tr>
-<tr><th>type</th><td>base</td><td>constructor</td></tr>
-<tr><th>visibility</th><td>rebels</td><td>scions</td><td>both</td></tr>
-</table>
+<a class="button" href="#"><span>Garrison</span></a> 
+<a class="button" href="#"><span>Outpost</span></a> 
+<a class="button" href="#"><span>War Factory</span></a> 
+<a class="button" href="#"><span>Intelligence Agency</span></a> 
+<a class="button" href="#"><span>Research Facility</span></a> 
+<a class="button" href="#"><span>Shipyard</span></a> 
+<a class="button" href="#"><span>Supremacy</span></a> 
+<a class="button" href="#"><span>Tactical</span></a> 
+
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Light</span></a> 
+<a class="button" href="#"><span>Heavy</span></a> 
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>Constructor</span></a> 
+</div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<a class="button" href="#"><span>Refinery</span></a>
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>Constructor</span></a> 
+</div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<a class="button" href="#"><span>Teleport</span></a>
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Light</span></a> 
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>Constructor</span></a> 
 </div>
 
 
-
+<div style="clear:both;"></div>
+<div class="controltable">
+<a class="button" href="#"><span>Carrier</span></a>
+<a class="button" href="#"><span>Assault Carrier</span></a>
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>Light</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
 </div>
 
 
+<div style="clear:both;"></div>
+<div class="controltable">
+<a class="button" href="#"><span>4.Fleet</span></a>
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
+</div>
+
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<a class="button" href="#"><span>5.Fleet</span></a>
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
+</div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<a class="button" href="#"><span>6.Fleet</span></a>
+</div>
+<div class="xtracontroltable">
+<a class="button" href="#"><span>Yellow</span></a> 
+<a class="button" href="#"><span>Blue</span></a> 
+<a class="button" href="#"><span>Grey</span></a> 
+<a class="button" href="#"><span>Upgrade Once</span></a> 
+<a class="button" href="#"><span>Upgrade Twice</span></a> 
+<a class="button" href="#"><span>+1</span></a> 
+<a class="button" href="#"><span>+2</span></a> 
+</div>
+
+
+</div>
 <map name="map1">
 
 END2
