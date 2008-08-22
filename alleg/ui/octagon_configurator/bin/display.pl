@@ -57,126 +57,134 @@ $output2 = <<END2;
 <div class="controls" onmouseover="setActiveStyleSheet('bigcontrol');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
 <div class="controltable">
-<a class="button" href="#"><span>Rebels</span></a> 
-<a class="button" href="#"><span>Scions</span></a> 
-<a class="button" href="#"><span>Both</span></a>
+Visibility<br>
+<input type="checkbox" name="visibility">Rebels</input>
+<input type="checkbox" name="visibility">Scions</input>
+</div>
+<div class="xtracontroltable">
+<input style="float:right; padding:0 0 2 2;" type="submit" name="submit"></input>
 </div>
 <div style="clear:both;"></div>
 <div class="controltable">
-<a class="button" href="#"><span>Garrison</span></a> 
-<a class="button" href="#"><span>Outpost</span></a> 
-<a class="button" href="#"><span>War Factory</span></a> 
-<a class="button" href="#"><span>Intelligence Agency</span></a> 
-<a class="button" href="#"><span>Research Facility</span></a> 
-<a class="button" href="#"><span>Shipyard</span></a> 
-<a class="button" href="#"><span>Supremacy</span></a> 
-<a class="button" href="#"><span>Tactical</span></a> 
+
+<input type="radio" name="sector7">Garrison</input><br>
+<input type="radio" name="sector7">Outpost</input><br>
+<input type="radio" name="sector7">War Factory</input><br>
+<input type="radio" name="sector7">Intelligence Agency</input><br>
+<input type="radio" name="sector7">Research Facility</input><br>
+<input type="radio" name="sector7">Shipyard</input><br>
+<input type="radio" name="sector7">Supremacy</input><br>
+<input type="radio" name="sector7">Tactical</input><br>
 
 </div>
 <div class="xtracontroltable">
-<a class="button" href="#"><span>Light</span></a> 
-<a class="button" href="#"><span>Heavy</span></a> 
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>Constructor</span></a> 
-</div>
-
-<div style="clear:both;"></div>
-<div class="controltable">
-<a class="button" href="#"><span>Refinery</span></a>
-</div>
-<div class="xtracontroltable">
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>Constructor</span></a> 
+<input type="checkbox" name="7.light">Light</input><br>
+<input type="checkbox" name="7.yellow">Yellow</input><br> 
+<input type="checkbox" name="7.blue">Blue</input><br> 
+<input type="checkbox" name="7.one">+1</input><br> 
+<input type="checkbox" name="7.two">+2</input><br> 
+<input type="checkbox" name="7.upgonce">Upgrade Once</input><br> 
+<input type="checkbox" name="7.upgtwice">Upgrade Twice</input><br> 
+<input type="checkbox" name="7.cons">Constructor</input><br> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<a class="button" href="#"><span>Teleport</span></a>
+<input type="checkbox" name="sector8">Refinery</input>
 </div>
+
 <div class="xtracontroltable">
-<a class="button" href="#"><span>Light</span></a> 
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>Constructor</span></a> 
-</div>
+<input type="checkbox" name="8.light">L</input> 
+<input type="checkbox" name="8.yellow">Y</input> 
+<input type="checkbox" name="8.blue">B</input> 
+<input type="checkbox" name="8.one">+1</input> 
+<input type="checkbox" name="8.two">+2</input> 
+<input type="checkbox" name="8.upgonce">U</input> 
+<input type="checkbox" name="8.upgtwice">UU</input> 
+<input type="checkbox" name="8.cons">C</input> 
 
-
-<div style="clear:both;"></div>
-<div class="controltable">
-<a class="button" href="#"><span>Carrier</span></a>
-<a class="button" href="#"><span>Assault Carrier</span></a>
-</div>
-<div class="xtracontroltable">
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>Light</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
-</div>
-
-
-<div style="clear:both;"></div>
-<div class="controltable">
-<a class="button" href="#"><span>4.Fleet</span></a>
-</div>
-<div class="xtracontroltable">
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
-</div>
-
-
-<div style="clear:both;"></div>
-<div class="controltable">
-<a class="button" href="#"><span>5.Fleet</span></a>
-</div>
-<div class="xtracontroltable">
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<a class="button" href="#"><span>6.Fleet</span></a>
+<input type="checkbox" name="sector1">Teleport</input>
 </div>
 <div class="xtracontroltable">
-<a class="button" href="#"><span>Yellow</span></a> 
-<a class="button" href="#"><span>Blue</span></a> 
-<a class="button" href="#"><span>Grey</span></a> 
-<a class="button" href="#"><span>Upgrade Once</span></a> 
-<a class="button" href="#"><span>Upgrade Twice</span></a> 
-<a class="button" href="#"><span>+1</span></a> 
-<a class="button" href="#"><span>+2</span></a> 
+<input type="checkbox" name="1.light">L</input> 
+<input type="checkbox" name="1.yellow">Y</input> 
+<input type="checkbox" name="1.blue">B</input> 
+<input type="checkbox" name="1.one">+1</input> 
+<input type="checkbox" name="1.two">+2</input> 
+<input type="checkbox" name="1.upgonce">U</input> 
+<input type="checkbox" name="1.upgtwice">UU</input> 
+<input type="checkbox" name="1.cons">C</input> 
 </div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<input type="radio" name="sector2">Carrier</input><br>
+<input type="radio" name="sector2a">Assault Carrier</input>
+</div>
+
+<div class="xtracontroltable">
+<input type="checkbox" name="2.light">L</input> 
+<input type="checkbox" name="2.yellow">Y</input> 
+<input type="checkbox" name="2.blue">B</input> 
+<input type="checkbox" name="2.one">+1</input> 
+<input type="checkbox" name="2.two">+2</input> 
+<input type="checkbox" name="2.upgonce">U</input> 
+<input type="checkbox" name="2.upgtwice">UU</input> 
+<input type="checkbox" name="2.cons">C</input> 
+</div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<input type="checkbox" name="sector4">4.Fleet</input>
+</div>
+
+<div class="xtracontroltable">
+<input type="checkbox" name="4.light">L</input> 
+<input type="checkbox" name="4.yellow">Y</input> 
+<input type="checkbox" name="4.blue">B</input> 
+<input type="checkbox" name="4.one">+1</input> 
+<input type="checkbox" name="4.two">+2</input> 
+<input type="checkbox" name="4.upgonce">U</input> 
+<input type="checkbox" name="4.upgtwice">UU</input> 
+<input type="checkbox" name="4.cons">C</input> 
+</div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<input type="checkbox" name="sector5">5.Fleet</input>
+</div>
+
+<div class="xtracontroltable">
+<input type="checkbox" name="5.light">L</input> 
+<input type="checkbox" name="5.yellow">Y</input> 
+<input type="checkbox" name="5.blue">B</input> 
+<input type="checkbox" name="5.one">+1</input> 
+<input type="checkbox" name="5.two">+2</input> 
+<input type="checkbox" name="5.upgonce">U</input> 
+<input type="checkbox" name="5.upgtwice">UU</input> 
+<input type="checkbox" name="5.cons">C</input> 
+</div>
+
+<div style="clear:both;"></div>
+<div class="controltable">
+<input type="checkbox" name="sector6">6.Fleet</input>
+</div>
+
+<div class="xtracontroltable">
+<input type="checkbox" name="6.light">L</input> 
+<input type="checkbox" name="6.yellow">Y</input> 
+<input type="checkbox" name="6.blue">B</input> 
+<input type="checkbox" name="6.one">+1</input> 
+<input type="checkbox" name="6.two">+2</input> 
+<input type="checkbox" name="6.upgonce">U</input> 
+<input type="checkbox" name="6.upgtwice">UU</input> 
+<input type="checkbox" name="6.cons">C</input> 
+</div>
+
 
 
 </div>
