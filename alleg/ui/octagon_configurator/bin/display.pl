@@ -65,31 +65,32 @@ function clearForms()
 <div class="controls" onmouseover="setActiveStyleSheet('bigcontrol');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
 <div class="controltable">
-Sector ID <input type="text" name="sectorid" id="sectorid" value="" size="3"><br>
+Sector ID <input type="text" name="0.sectorid" id="sectorid" value="" size="3"><br>
 Visibility<br>
-<input type="checkbox" name="visibility" value="rebels">Rebels</input>
-<input type="checkbox" name="visibility" value="scions">Scions</input>
+<input type="radio" name="0.visibility" value="rebels">Rebels</input><br>
+<input type="radio" name="0.visibility" value="scions">Scions</input><br>
+<input type="radio" name="0.visibility" value="rebels scions">Both</input><br>
 </div>
 <div class="xtracontroltable">
-<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="submit" value="Submit"></p>
+<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"></p>
 </div>
 <div style="clear:both;"></div>
 <div class="controltable">
 
-<input type="radio" name="sector7" value="sector7Garr.gif">Garrison</input><br>
-<input type="radio" name="sector7" value="sector7Outpost.gif">Outpost</input><br>
-<input type="radio" name="sector7" value="sector7Warfactory.gif">War Factory</input><br>
-<input type="radio" name="sector7" value="sector7Intelligence.gif">Intelligence Agency</input><br>
-<input type="radio" name="sector7" value="sector7Research.gif">Research Facility</input><br>
-<input type="radio" name="sector7" value="sector7ShipYard.gif">Shipyard</input><br>
-<input type="radio" name="sector7" value="sector7Sup.gif">Supremacy</input><br>
-<input type="radio" name="sector7" value="sector7Tac.gif">Tactical</input><br>
+<input type="radio" name="7.sector7" value="sector7Garr.gif">Garrison</input><br>
+<input type="radio" name="7.sector7" value="sector7Outpost.gif">Outpost</input><br>
+<input type="radio" name="7.sector7" value="sector7Warfactory.gif">War Factory</input><br>
+<input type="radio" name="7.sector7" value="sector7Intelligence.gif">Intelligence Agency</input><br>
+<input type="radio" name="7.sector7" value="sector7Research.gif">Research Facility</input><br>
+<input type="radio" name="7.sector7" value="sector7ShipYard.gif">Shipyard</input><br>
+<input type="radio" name="7.sector7" value="sector7Sup.gif">Supremacy</input><br>
+<input type="radio" name="7.sector7" value="sector7Tac.gif">Tactical</input><br>
 
 </div>
 <div class="xtracontroltable">
 <input type="checkbox" name="7.light" value="sector7Light.gif">Light</input><br>
-<input type="checkbox" name="7.yellow" value="sector7BackgroundYellow.gif">Yellow</input><br> 
-<input type="checkbox" name="7.blue" value="sector7BackgroundBlue.gif">Blue</input><br> 
+<input type="checkbox" name="7.0yellow" value="sector7BackgroundYellow.gif">Yellow</input><br> 
+<input type="checkbox" name="7.0blue" value="sector7BackgroundBlue.gif">Blue</input><br> 
 <input type="checkbox" name="7.one" value="sector7One.gif">+1</input><br> 
 <input type="checkbox" name="7.two" value="sector7Two.gif">+2</input><br> 
 <input type="checkbox" name="7.upgonce" value="sector7UpgradeOnce.gif">Upgrade Once</input><br> 
@@ -99,13 +100,13 @@ Visibility<br>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector8" value="sector8Refinery.gif">Refinery</input>
+<input type="checkbox" name="8.sector8" value="sector8Refinery.gif">Refinery</input>
 </div>
 
 <div class="xtracontroltable">
 <input type="checkbox" name="8.light" value="sector8Light.gif">L</input> 
-<input type="checkbox" name="8.yellow" value="sector8BackgroundYellow.gif">Y</input> 
-<input type="checkbox" name="8.blue" value="sector8BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="8.0yellow" value="sector8BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="8.0blue" value="sector8BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="8.one" value="sector8One.gif">+1</input> 
 <input type="checkbox" name="8.two" value="sector8Two.gif">+2</input> 
 <input type="checkbox" name="8.upgonce" value="sector8UpgradeOnce.gif">U</input> 
@@ -116,12 +117,12 @@ Visibility<br>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector1" value="sector1Teleport.gif">Teleport</input>
+<input type="checkbox" name="1.sector1" value="sector1Teleport.gif">Teleport</input>
 </div>
 <div class="xtracontroltable">
 <input type="checkbox" name="1.light" value="sector1Light.gif">L</input> 
-<input type="checkbox" name="1.yellow" value="sector1BackgroundYellow.gif">Y</input> 
-<input type="checkbox" name="1.blue" value="sector1BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="1.0yellow" value="sector1BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="1.0blue" value="sector1BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="1.one" value="sector1One.gif">+1</input> 
 <input type="checkbox" name="1.two" value="sector1Two.gif">+2</input> 
 <input type="checkbox" name="1.upgonce" value="sector1UpgradeOnce.gif">U</input> 
@@ -131,14 +132,14 @@ Visibility<br>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector2" value="sector2Carrier.gif">Carrier</input><br>
+<input type="checkbox" name="2.sector2" value="sector2Carrier.gif">Carrier</input><br>
 </div>
 
 <div class="xtracontroltable">
 <input type="checkbox" name="2.ass" value="sector2AssaultCarrier.gif">A</input>
 <input type="checkbox" name="2.light" value="sector2Light.gif">L</input> 
-<input type="checkbox" name="2.yellow" value="sector2BackgroundYellow.gif">Y</input> 
-<input type="checkbox" name="2.blue" value="sector2BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="2.0yellow" value="sector2BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="2.0blue" value="sector2BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="2.one" value="sector2One.gif">+1</input> 
 <input type="checkbox" name="2.two" value="sector2Two.gif">+2</input> 
 <input type="checkbox" name="2.upgonce" value="sector2UpgradeOnce.gif">U</input> 
@@ -148,13 +149,13 @@ Visibility<br>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector4" value="sector4Fleet.gif">4.Fleet</input>
+<input type="checkbox" name="4.sector4" value="sector4Fleet.gif">4.Fleet</input>
 </div>
 
 <div class="xtracontroltable">
 <input type="checkbox" name="4.light" value="sector4Light.gif">L</input> 
-<input type="checkbox" name="4.yellow" value="sector4BackgroundYellow.gif">Y</input> 
-<input type="checkbox" name="4.blue" value="sector4BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="4.0yellow" value="sector4BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="4.0blue" value="sector4BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="4.one" value="sector4One.gif">+1</input> 
 <input type="checkbox" name="4.two" value="sector4Two.gif">+2</input> 
 <input type="checkbox" name="4.upgonce" value="sector4UpgradeOnce.gif">U</input> 
@@ -164,13 +165,13 @@ Visibility<br>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector5" value="sector5Fleet.gif">5.Fleet</input>
+<input type="checkbox" name="5.sector5" value="sector5Fleet.gif">5.Fleet</input>
 </div>
 
 <div class="xtracontroltable">
 <input type="checkbox" name="5.light" value="sector5Light.gif">L</input> 
-<input type="checkbox" name="5.yellow" value="sector5BackgroundYellow.gif">Y</input> 
-<input type="checkbox" name="5.blue" value="sector5BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="5.0yellow" value="sector5BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="5.0blue" value="sector5BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="5.one" value="sector5One.gif">+1</input> 
 <input type="checkbox" name="5.two" value="sector5Two.gif">+2</input> 
 <input type="checkbox" name="5.upgonce" value="sector5UpgradeOnce.gif">U</input> 
@@ -180,13 +181,13 @@ Visibility<br>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector6" value="sector6Fleet.gif">6.Fleet</input>
+<input type="checkbox" name="6.sector6" value="sector6Fleet.gif">6.Fleet</input>
 </div>
 
 <div class="xtracontroltable">
 <input type="checkbox" name="6.light" value="sector6Light.gif">L</input> 
-<input type="checkbox" name="6.yellow" value="sector6BackgroundYellow.gif">Y</input> 
-<input type="checkbox" name="6.blue" value="sector6BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="6.0yellow" value="sector6BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="6.0blue" value="sector6BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="6.one" value="sector6One.gif">+1</input> 
 <input type="checkbox" name="6.two" value="sector6Two.gif">+2</input> 
 <input type="checkbox" name="6.upgonce" value="sector6UpgradeOnce.gif">U</input> 
@@ -257,12 +258,34 @@ foreach $item (sort{$a<=>$b} keys %db){
 }
 print $output3;
 
+#===========================store form data into db
 my @params=param();
 
 open(OUTPUT,">/tmp/output");
 
+my $sectorid=param("sectorid");
+
+if($sectorid=~/\d+/){
+#	$sth=$dbh->prepare('update afcoc set ?=? where id=$sectorid');
+#	$value=param($param);
+#	$sth->execute($param,$value);
+}
+
 foreach my $param (sort @params){
 	$value=param($param);
+	if($param=~/sectorid/){
+		$sectorid=$value;
+		next;
+	}
+	if($param=~/submit/){
+		next;
+	}
+	if($param=~/visibility/){
+		$visibility=$value;
+		next;
+	}
+
+	($sector,$type)=split(/\./,$param);
 	print OUTPUT "$param $value\n";
 }
 
