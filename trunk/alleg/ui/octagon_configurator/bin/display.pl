@@ -36,15 +36,8 @@ $output2 = <<END2;
     if(document.images) {
     document.images[from].src = pics[to].src;
     }
-  }
-function clearForms()
-{
-  var i;
-  for (i = 0; (i < document.forms.length); i++) {
-    document.forms[i].reset();
-  }
-}
-  //-->
+ } 
+//-->
 </SCRIPT>
 <script type="text/javascript" src="styleswitcher.js"></script>
 <link rel="stylesheet" type="text/css" href="smaller.css" title="smaller" />
@@ -54,7 +47,6 @@ function clearForms()
 </head>
 
 
-<onLoad="clearForms()" onUnload="clearForms()">
 <body>
 <form action="display.pl" method="post">
 <img style="position:absolute;left:210px;" src="../AW5Map1024.png" border="0" height="793" width="1024">
@@ -67,16 +59,16 @@ function clearForms()
 <div class="controltable">
 Sector ID <input type="text" name="0.sectorid" id="sectorid" value="" size="3"><br>
 Visibility<br>
-<input type="radio" name="0.visibility" value="rebels">Rebels</input><br>
-<input type="radio" name="0.visibility" value="scions">Scions</input><br>
-<input type="radio" name="0.visibility" value="rebels scions">Both</input><br>
+<input type="checkbox" name="0.rebelvisibility">Rebels</input><br>
+<input type="checkbox" name="0.scionvisibility">Scions</input><br>
 </div>
 <div class="xtracontroltable">
-<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"></p>
+<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"><br><input type="reset"></p>
 </div>
 <div style="clear:both;"></div>
 <div class="controltable">
 
+<input type="radio" name="7.sector7" value="">None</input><br>
 <input type="radio" name="7.sector7" value="sector7Garr.gif">Garrison</input><br>
 <input type="radio" name="7.sector7" value="sector7Outpost.gif">Outpost</input><br>
 <input type="radio" name="7.sector7" value="sector7Warfactory.gif">War Factory</input><br>
@@ -136,7 +128,6 @@ Visibility<br>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="2.ass" value="sector2AssaultCarrier.gif">A</input>
 <input type="checkbox" name="2.light" value="sector2Light.gif">L</input> 
 <input type="checkbox" name="2.0yellow" value="sector2BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="2.0blue" value="sector2BackgroundBlue.gif">B</input> 
@@ -145,6 +136,7 @@ Visibility<br>
 <input type="checkbox" name="2.upgonce" value="sector2UpgradeOnce.gif">U</input> 
 <input type="checkbox" name="2.upgtwice" value="sector2UpgradeTwice.gif">UU</input> 
 <input type="checkbox" name="2.cons" value="sector2Constructor.gif">C</input> 
+<input type="checkbox" name="2.ass" value="sector2AssaultCarrier.gif">A</input>
 </div>
 
 <div style="clear:both;"></div>
@@ -254,9 +246,8 @@ foreach $item (sort{$a<=>$b} keys %db){
 	$x2=$x+15;
 	$y2=$y+15;
 	#print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" href="$db{$item}{map}" onclick="changer('holder',$item);" onmouseout="changer('holder',$item);">\n/;
-	print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" onclick="changer('holder',$item);document.getElementById('sectorid').value=$item;" onmouseup="changer('holder',$item);">\n/;
+	print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" onclick="changer('holder',$item);document.getElementById('sectorid').value=$item-1;" onmouseup="changer('holder',$item);">\n/;
 }
-print $output3;
 
 #===========================store form data into db
 my @params=param();
@@ -264,12 +255,11 @@ my @params=param();
 open(OUTPUT,">/tmp/output");
 
 my $sectorid=param("sectorid");
-
-if($sectorid=~/\d+/){
-#	$sth=$dbh->prepare('update afcoc set ?=? where id=$sectorid');
-#	$value=param($param);
-#	$sth->execute($param,$value);
-}
+my $backgrounds;
+my $icons;
+my $visibility;
+my $rebelvisibility;
+my $scionvisibility;
 
 foreach my $param (sort @params){
 	$value=param($param);
@@ -280,12 +270,43 @@ foreach my $param (sort @params){
 	if($param=~/submit/){
 		next;
 	}
-	if($param=~/visibility/){
-		$visibility=$value;
+	if($param=~/rebelvisibility/){
+		$rebelvisibility=$value;
+		next;
+	}
+	if($param=~/scionvisibility/){
+		$scionvisibility=$value;
 		next;
 	}
 
-	($sector,$type)=split(/\./,$param);
-	print OUTPUT "$param $value\n";
+	if($param=~/0blue|0yellow/){
+		$backgrounds=$backgrounds." ".$value;
+	}else{
+		$icons=$icons." ".$value;
+	}
 }
 
+print OUTPUT "$sectorid r:$rebelvisibility s:$scionvisibility\n";
+print OUTPUT "backgrounds: $backgrounds\n";
+print OUTPUT "icons: $icons\n";
+
+if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
+	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons' where id=$sectorid");
+	$sth->execute();
+	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='generateoct.pl?$sectorid'>generate sector</a><br><a href='generateglobalmap.pl'>generate global map</a></div>";
+}else{
+	print "<div class='controltable' style='clear:both;margin-top:30px;'>error: need (at least) sector id, background, icon.</div>";
+}
+
+if($rebelvisibility eq "on"){
+	$visibility=$visibility." rebels";
+}
+if($scionvisibility eq "on"){
+	$visibility=$visibility." scions";
+}
+if($visibility ne ""){
+	$sth=$dbh->prepare("update afcoc set visibility='$visibility' where id=$sectorid");
+	$sth->execute();
+}
+
+print $output3;
