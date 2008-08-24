@@ -37,6 +37,13 @@ $output2 = <<END2;
     document.images[from].src = pics[to].src;
     }
   }
+function clearForms()
+{
+  var i;
+  for (i = 0; (i < document.forms.length); i++) {
+    document.forms[i].reset();
+  }
+}
   //-->
 </SCRIPT>
 <script type="text/javascript" src="styleswitcher.js"></script>
@@ -47,9 +54,10 @@ $output2 = <<END2;
 </head>
 
 
+<onLoad="clearForms()" onUnload="clearForms()">
 <body>
-
-<img style="position:absolute;left:210px;" src="../AW5Map1024.png" usemap="#map1" border="0" height="793" width="1024">
+<form action="display.pl" method="post">
+<img style="position:absolute;left:210px;" src="../AW5Map1024.png" border="0" height="793" width="1024">
 <img style="position:absolute;left:210px;" src="../map1024tbak2.gif" usemap="#map1" border="0" height="793" width="1024">
 
 <img class="octagon" name="holder" id="holder" src="../blancOctagon.gif" alt="Holder" onmouseover="setActiveStyleSheet('bigger');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
@@ -57,137 +65,137 @@ $output2 = <<END2;
 <div class="controls" onmouseover="setActiveStyleSheet('bigcontrol');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
 <div class="controltable">
+Sector ID <input type="text" name="sectorid" id="sectorid" value="" size="3"><br>
 Visibility<br>
-<input type="checkbox" name="visibility">Rebels</input>
-<input type="checkbox" name="visibility">Scions</input>
+<input type="checkbox" name="visibility" value="rebels">Rebels</input>
+<input type="checkbox" name="visibility" value="scions">Scions</input>
 </div>
 <div class="xtracontroltable">
-<input style="float:right; padding:0 0 2 2;" type="submit" name="submit"></input>
+<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="submit" value="Submit"></p>
 </div>
 <div style="clear:both;"></div>
 <div class="controltable">
 
-<input type="radio" name="sector7">Garrison</input><br>
-<input type="radio" name="sector7">Outpost</input><br>
-<input type="radio" name="sector7">War Factory</input><br>
-<input type="radio" name="sector7">Intelligence Agency</input><br>
-<input type="radio" name="sector7">Research Facility</input><br>
-<input type="radio" name="sector7">Shipyard</input><br>
-<input type="radio" name="sector7">Supremacy</input><br>
-<input type="radio" name="sector7">Tactical</input><br>
+<input type="radio" name="sector7" value="sector7Garr.gif">Garrison</input><br>
+<input type="radio" name="sector7" value="sector7Outpost.gif">Outpost</input><br>
+<input type="radio" name="sector7" value="sector7Warfactory.gif">War Factory</input><br>
+<input type="radio" name="sector7" value="sector7Intelligence.gif">Intelligence Agency</input><br>
+<input type="radio" name="sector7" value="sector7Research.gif">Research Facility</input><br>
+<input type="radio" name="sector7" value="sector7ShipYard.gif">Shipyard</input><br>
+<input type="radio" name="sector7" value="sector7Sup.gif">Supremacy</input><br>
+<input type="radio" name="sector7" value="sector7Tac.gif">Tactical</input><br>
 
 </div>
 <div class="xtracontroltable">
-<input type="checkbox" name="7.light">Light</input><br>
-<input type="checkbox" name="7.yellow">Yellow</input><br> 
-<input type="checkbox" name="7.blue">Blue</input><br> 
-<input type="checkbox" name="7.one">+1</input><br> 
-<input type="checkbox" name="7.two">+2</input><br> 
-<input type="checkbox" name="7.upgonce">Upgrade Once</input><br> 
-<input type="checkbox" name="7.upgtwice">Upgrade Twice</input><br> 
-<input type="checkbox" name="7.cons">Constructor</input><br> 
+<input type="checkbox" name="7.light" value="sector7Light.gif">Light</input><br>
+<input type="checkbox" name="7.yellow" value="sector7BackgroundYellow.gif">Yellow</input><br> 
+<input type="checkbox" name="7.blue" value="sector7BackgroundBlue.gif">Blue</input><br> 
+<input type="checkbox" name="7.one" value="sector7One.gif">+1</input><br> 
+<input type="checkbox" name="7.two" value="sector7Two.gif">+2</input><br> 
+<input type="checkbox" name="7.upgonce" value="sector7UpgradeOnce.gif">Upgrade Once</input><br> 
+<input type="checkbox" name="7.upgtwice" value="sector7UpgradeTwice.gif">Upgrade Twice</input><br> 
+<input type="checkbox" name="7.cons" value="sector7Constructor.gif">Constructor</input><br> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector8">Refinery</input>
+<input type="checkbox" name="sector8" value="sector8Refinery.gif">Refinery</input>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="8.light">L</input> 
-<input type="checkbox" name="8.yellow">Y</input> 
-<input type="checkbox" name="8.blue">B</input> 
-<input type="checkbox" name="8.one">+1</input> 
-<input type="checkbox" name="8.two">+2</input> 
-<input type="checkbox" name="8.upgonce">U</input> 
-<input type="checkbox" name="8.upgtwice">UU</input> 
-<input type="checkbox" name="8.cons">C</input> 
+<input type="checkbox" name="8.light" value="sector8Light.gif">L</input> 
+<input type="checkbox" name="8.yellow" value="sector8BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="8.blue" value="sector8BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="8.one" value="sector8One.gif">+1</input> 
+<input type="checkbox" name="8.two" value="sector8Two.gif">+2</input> 
+<input type="checkbox" name="8.upgonce" value="sector8UpgradeOnce.gif">U</input> 
+<input type="checkbox" name="8.upgtwice" value="sector8UpgradeTwice.gif">UU</input> 
+<input type="checkbox" name="8.cons" value="sector8Constructor.gif">C</input> 
 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector1">Teleport</input>
+<input type="checkbox" name="sector1" value="sector1Teleport.gif">Teleport</input>
 </div>
 <div class="xtracontroltable">
-<input type="checkbox" name="1.light">L</input> 
-<input type="checkbox" name="1.yellow">Y</input> 
-<input type="checkbox" name="1.blue">B</input> 
-<input type="checkbox" name="1.one">+1</input> 
-<input type="checkbox" name="1.two">+2</input> 
-<input type="checkbox" name="1.upgonce">U</input> 
-<input type="checkbox" name="1.upgtwice">UU</input> 
-<input type="checkbox" name="1.cons">C</input> 
+<input type="checkbox" name="1.light" value="sector1Light.gif">L</input> 
+<input type="checkbox" name="1.yellow" value="sector1BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="1.blue" value="sector1BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="1.one" value="sector1One.gif">+1</input> 
+<input type="checkbox" name="1.two" value="sector1Two.gif">+2</input> 
+<input type="checkbox" name="1.upgonce" value="sector1UpgradeOnce.gif">U</input> 
+<input type="checkbox" name="1.upgtwice" value="sector1UpgradeTwice.gif">UU</input> 
+<input type="checkbox" name="1.cons" value="sector1Constructor.gif">C</input> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="radio" name="sector2">Carrier</input><br>
-<input type="radio" name="sector2a">Assault Carrier</input>
+<input type="checkbox" name="sector2" value="sector2Carrier.gif">Carrier</input><br>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="2.light">L</input> 
-<input type="checkbox" name="2.yellow">Y</input> 
-<input type="checkbox" name="2.blue">B</input> 
-<input type="checkbox" name="2.one">+1</input> 
-<input type="checkbox" name="2.two">+2</input> 
-<input type="checkbox" name="2.upgonce">U</input> 
-<input type="checkbox" name="2.upgtwice">UU</input> 
-<input type="checkbox" name="2.cons">C</input> 
+<input type="checkbox" name="2.ass" value="sector2AssaultCarrier.gif">A</input>
+<input type="checkbox" name="2.light" value="sector2Light.gif">L</input> 
+<input type="checkbox" name="2.yellow" value="sector2BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="2.blue" value="sector2BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="2.one" value="sector2One.gif">+1</input> 
+<input type="checkbox" name="2.two" value="sector2Two.gif">+2</input> 
+<input type="checkbox" name="2.upgonce" value="sector2UpgradeOnce.gif">U</input> 
+<input type="checkbox" name="2.upgtwice" value="sector2UpgradeTwice.gif">UU</input> 
+<input type="checkbox" name="2.cons" value="sector2Constructor.gif">C</input> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector4">4.Fleet</input>
+<input type="checkbox" name="sector4" value="sector4Fleet.gif">4.Fleet</input>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="4.light">L</input> 
-<input type="checkbox" name="4.yellow">Y</input> 
-<input type="checkbox" name="4.blue">B</input> 
-<input type="checkbox" name="4.one">+1</input> 
-<input type="checkbox" name="4.two">+2</input> 
-<input type="checkbox" name="4.upgonce">U</input> 
-<input type="checkbox" name="4.upgtwice">UU</input> 
-<input type="checkbox" name="4.cons">C</input> 
+<input type="checkbox" name="4.light" value="sector4Light.gif">L</input> 
+<input type="checkbox" name="4.yellow" value="sector4BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="4.blue" value="sector4BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="4.one" value="sector4One.gif">+1</input> 
+<input type="checkbox" name="4.two" value="sector4Two.gif">+2</input> 
+<input type="checkbox" name="4.upgonce" value="sector4UpgradeOnce.gif">U</input> 
+<input type="checkbox" name="4.upgtwice" value="sector4UpgradeTwice.gif">UU</input> 
+<input type="checkbox" name="4.cons" value="sector4Constructor.gif">C</input> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector5">5.Fleet</input>
+<input type="checkbox" name="sector5" value="sector5Fleet.gif">5.Fleet</input>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="5.light">L</input> 
-<input type="checkbox" name="5.yellow">Y</input> 
-<input type="checkbox" name="5.blue">B</input> 
-<input type="checkbox" name="5.one">+1</input> 
-<input type="checkbox" name="5.two">+2</input> 
-<input type="checkbox" name="5.upgonce">U</input> 
-<input type="checkbox" name="5.upgtwice">UU</input> 
-<input type="checkbox" name="5.cons">C</input> 
+<input type="checkbox" name="5.light" value="sector5Light.gif">L</input> 
+<input type="checkbox" name="5.yellow" value="sector5BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="5.blue" value="sector5BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="5.one" value="sector5One.gif">+1</input> 
+<input type="checkbox" name="5.two" value="sector5Two.gif">+2</input> 
+<input type="checkbox" name="5.upgonce" value="sector5UpgradeOnce.gif">U</input> 
+<input type="checkbox" name="5.upgtwice" value="sector5UpgradeTwice.gif">UU</input> 
+<input type="checkbox" name="5.cons" value="sector5Constructor.gif">C</input> 
 </div>
 
 <div style="clear:both;"></div>
 <div class="controltable">
-<input type="checkbox" name="sector6">6.Fleet</input>
+<input type="checkbox" name="sector6" value="sector6Fleet.gif">6.Fleet</input>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="6.light">L</input> 
-<input type="checkbox" name="6.yellow">Y</input> 
-<input type="checkbox" name="6.blue">B</input> 
-<input type="checkbox" name="6.one">+1</input> 
-<input type="checkbox" name="6.two">+2</input> 
-<input type="checkbox" name="6.upgonce">U</input> 
-<input type="checkbox" name="6.upgtwice">UU</input> 
-<input type="checkbox" name="6.cons">C</input> 
+<input type="checkbox" name="6.light" value="sector6Light.gif">L</input> 
+<input type="checkbox" name="6.yellow" value="sector6BackgroundYellow.gif">Y</input> 
+<input type="checkbox" name="6.blue" value="sector6BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="6.one" value="sector6One.gif">+1</input> 
+<input type="checkbox" name="6.two" value="sector6Two.gif">+2</input> 
+<input type="checkbox" name="6.upgonce" value="sector6UpgradeOnce.gif">U</input> 
+<input type="checkbox" name="6.upgtwice" value="sector6UpgradeTwice.gif">UU</input> 
+<input type="checkbox" name="6.cons" value="sector6Constructor.gif">C</input> 
 </div>
-
-
-
 </div>
+</form>
+
 <map name="map1">
 
 END2
@@ -245,6 +253,16 @@ foreach $item (sort{$a<=>$b} keys %db){
 	$x2=$x+15;
 	$y2=$y+15;
 	#print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" href="$db{$item}{map}" onclick="changer('holder',$item);" onmouseout="changer('holder',$item);">\n/;
-	print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" onclick="changer('holder',$item);" onmouseup="changer('holder',$item);">\n/;
+	print qq/<area shape="rect" coords="$x1,$y1,$x2,$y2" onclick="changer('holder',$item);document.getElementById('sectorid').value=$item;" onmouseup="changer('holder',$item);">\n/;
 }
 print $output3;
+
+my @params=param();
+
+open(OUTPUT,">/tmp/output");
+
+foreach my $param (sort @params){
+	$value=param($param);
+	print OUTPUT "$param $value\n";
+}
+
