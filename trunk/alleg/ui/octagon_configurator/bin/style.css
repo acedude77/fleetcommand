@@ -35,6 +35,7 @@ a.button:active span {
 
 
 div.controltable {
+	font-size:70%;
 	float:left;
         border-style:solid;
         border-color:blue;
@@ -46,6 +47,7 @@ div.controltable {
 }
 
 div.xtracontroltable {
+	font-size:70%;
 	float:left;
         border-style:solid;
         border-color:blue;
