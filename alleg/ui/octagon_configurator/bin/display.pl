@@ -69,14 +69,14 @@ Visibility<br>
 <div class="controltable">
 
 <input type="radio" name="7.sector7" value="">None</input><br>
-<input type="radio" name="7.sector7" value="sector7Garr.gif">Garrison</input><br>
-<input type="radio" name="7.sector7" value="sector7Outpost.gif">Outpost</input><br>
-<input type="radio" name="7.sector7" value="sector7Warfactory.gif">War Factory</input><br>
-<input type="radio" name="7.sector7" value="sector7Intelligence.gif">Intelligence Agency</input><br>
-<input type="radio" name="7.sector7" value="sector7Research.gif">Research Facility</input><br>
-<input type="radio" name="7.sector7" value="sector7ShipYard.gif">Shipyard</input><br>
-<input type="radio" name="7.sector7" value="sector7Sup.gif">Supremacy</input><br>
-<input type="radio" name="7.sector7" value="sector7Tac.gif">Tactical</input><br>
+<input type="radio" name="7.sector7" value="sector7Garr.gif sector7BaseIcon.gif">Garrison</input><br>
+<input type="radio" name="7.sector7" value="sector7Outpost.gif sector7BaseIcon.gif">Outpost</input><br>
+<input type="radio" name="7.sector7" value="sector7Warfactory.gif sector7BaseIcon.gif">War Factory</input><br>
+<input type="radio" name="7.sector7" value="sector7Intelligence.gif sector7BaseIcon.gif">Intelligence Agency</input><br>
+<input type="radio" name="7.sector7" value="sector7Research.gif sector7BaseIcon.gif">Research Facility</input><br>
+<input type="radio" name="7.sector7" value="sector7ShipYard.gif sector7BaseIcon.gif">Shipyard</input><br>
+<input type="radio" name="7.sector7" value="sector7Sup.gif sector7BaseIcon.gif">Supremacy</input><br>
+<input type="radio" name="7.sector7" value="sector7Tac.gif sector7BaseIcon.gif">Tactical</input><br>
 
 </div>
 <div class="xtracontroltable">
@@ -135,7 +135,6 @@ Visibility<br>
 <input type="checkbox" name="2.two" value="sector2Two.gif">+2</input> 
 <input type="checkbox" name="2.upgonce" value="sector2UpgradeOnce.gif">U</input> 
 <input type="checkbox" name="2.upgtwice" value="sector2UpgradeTwice.gif">UU</input> 
-<input type="checkbox" name="2.cons" value="sector2Constructor.gif">C</input> 
 <input type="checkbox" name="2.ass" value="sector2AssaultCarrier.gif">A</input>
 </div>
 
@@ -145,14 +144,12 @@ Visibility<br>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="4.light" value="sector4Light.gif">L</input> 
 <input type="checkbox" name="4.0yellow" value="sector4BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="4.0blue" value="sector4BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="4.one" value="sector4One.gif">+1</input> 
 <input type="checkbox" name="4.two" value="sector4Two.gif">+2</input> 
 <input type="checkbox" name="4.upgonce" value="sector4UpgradeOnce.gif">U</input> 
 <input type="checkbox" name="4.upgtwice" value="sector4UpgradeTwice.gif">UU</input> 
-<input type="checkbox" name="4.cons" value="sector4Constructor.gif">C</input> 
 </div>
 
 <div style="clear:both;"></div>
@@ -161,14 +158,12 @@ Visibility<br>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="5.light" value="sector5Light.gif">L</input> 
 <input type="checkbox" name="5.0yellow" value="sector5BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="5.0blue" value="sector5BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="5.one" value="sector5One.gif">+1</input> 
 <input type="checkbox" name="5.two" value="sector5Two.gif">+2</input> 
 <input type="checkbox" name="5.upgonce" value="sector5UpgradeOnce.gif">U</input> 
 <input type="checkbox" name="5.upgtwice" value="sector5UpgradeTwice.gif">UU</input> 
-<input type="checkbox" name="5.cons" value="sector5Constructor.gif">C</input> 
 </div>
 
 <div style="clear:both;"></div>
@@ -177,14 +172,12 @@ Visibility<br>
 </div>
 
 <div class="xtracontroltable">
-<input type="checkbox" name="6.light" value="sector6Light.gif">L</input> 
 <input type="checkbox" name="6.0yellow" value="sector6BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="6.0blue" value="sector6BackgroundBlue.gif">B</input> 
 <input type="checkbox" name="6.one" value="sector6One.gif">+1</input> 
 <input type="checkbox" name="6.two" value="sector6Two.gif">+2</input> 
 <input type="checkbox" name="6.upgonce" value="sector6UpgradeOnce.gif">U</input> 
 <input type="checkbox" name="6.upgtwice" value="sector6UpgradeTwice.gif">UU</input> 
-<input type="checkbox" name="6.cons" value="sector6Constructor.gif">C</input> 
 </div>
 </div>
 </form>
@@ -252,12 +245,12 @@ foreach $item (sort{$a<=>$b} keys %db){
 #===========================store form data into db
 my @params=param();
 
-open(OUTPUT,">/tmp/output");
+#open(OUTPUT,">/tmp/output");
 
 my $sectorid=param("sectorid");
-my $backgrounds;
-my $icons;
-my $visibility;
+my $backgrounds="";
+my $icons="";
+my $visibility="";
 my $rebelvisibility;
 my $scionvisibility;
 
@@ -286,14 +279,15 @@ foreach my $param (sort @params){
 	}
 }
 
-print OUTPUT "$sectorid r:$rebelvisibility s:$scionvisibility\n";
-print OUTPUT "backgrounds: $backgrounds\n";
-print OUTPUT "icons: $icons\n";
+#print OUTPUT "$sectorid r:$rebelvisibility s:$scionvisibility\n";
+#print OUTPUT "backgrounds: $backgrounds\n";
+#print OUTPUT "icons: $icons\n";
 
 if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
 	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons' where id=$sectorid");
 	$sth->execute();
-	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='generateoct.pl?$sectorid'>generate sector</a><br><a href='generateglobalmap.pl'>generate global map</a></div>";
+#	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='generateoct.pl?$sectorid'>generate sector</a><br><a href='generateglobalmap.pl'>generate global map</a></div>";
+	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='showdb.pl'>showdb & generate octagons</a></div>";
 }else{
 	print "<div class='controltable' style='clear:both;margin-top:30px;'>error: need (at least) sector id, background, icon.</div>";
 }
