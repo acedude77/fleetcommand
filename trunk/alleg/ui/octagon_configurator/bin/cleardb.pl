@@ -7,7 +7,7 @@ my $pass='pZbDdzuW.tmXMvqX';
 my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
-my $sth=$dbh->prepare('update afcoc set backgrounds="", icons="" where id=?');
+my $sth=$dbh->prepare('update afcoc set visibility="", backgrounds="", icons="" where id=?');
 $sth->execute(@ARGV);
 
 print header,start_html;
