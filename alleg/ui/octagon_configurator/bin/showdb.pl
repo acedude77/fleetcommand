@@ -19,7 +19,7 @@ print "<table border='1'>\n";
 print "<tr><th>sector id</th><th>sector name</th><th>backgrounds</th><th>icons</th></tr>\n";
 
 while(($sectorid,$sector_name,$backgrounds,$icons)=$sth->fetchrow_array()){
-	print "<tr><td>$sectorid</td><td>$sector_name</td><td>$backgrounds</td><td>$icons</td></tr>\n";
+	print "<tr><td><a href='cleardb.pl?$sectorid'>$sectorid</a></td><td>$sector_name</td><td>$backgrounds</td><td>$icons</td></tr>\n";
 }
 
 print "</table>\n";

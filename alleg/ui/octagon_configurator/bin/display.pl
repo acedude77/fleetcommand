@@ -72,8 +72,8 @@ Visibility<br>
 <input type="radio" name="7.sector7" value="sector7Garr.gif sector7BaseIcon.gif">Garrison</input><br>
 <input type="radio" name="7.sector7" value="sector7Outpost.gif sector7BaseIcon.gif">Outpost</input><br>
 <input type="radio" name="7.sector7" value="sector7Warfactory.gif sector7BaseIcon.gif">War Factory</input><br>
-<input type="radio" name="7.sector7" value="sector7Intelligence.gif sector7BaseIcon.gif">Intelligence Agency</input><br>
-<input type="radio" name="7.sector7" value="sector7Research.gif sector7BaseIcon.gif">Research Facility</input><br>
+<input type="radio" name="7.sector7" value="sector7Intelligence.gif">Intelligence Agency</input><br>
+<input type="radio" name="7.sector7" value="sector7Research.gif">Research Facility</input><br>
 <input type="radio" name="7.sector7" value="sector7ShipYard.gif sector7BaseIcon.gif">Shipyard</input><br>
 <input type="radio" name="7.sector7" value="sector7Sup.gif sector7BaseIcon.gif">Supremacy</input><br>
 <input type="radio" name="7.sector7" value="sector7Tac.gif sector7BaseIcon.gif">Tactical</input><br>
