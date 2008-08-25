@@ -63,7 +63,7 @@ Visibility<br>
 <input type="checkbox" name="0.scionvisibility">Scions</input><br>
 </div>
 <div class="xtracontroltable">
-<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"><br><input type="reset"></p>
+<p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"><br><input type="reset" value="Reset"></p>
 </div>
 <div style="clear:both;"></div>
 <div class="controltable">
