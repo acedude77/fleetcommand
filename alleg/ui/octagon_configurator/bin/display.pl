@@ -50,7 +50,7 @@ $output2 = <<END2;
 <body>
 <form action="display.pl" method="post">
 <img style="position:absolute;left:210px;" src="../AW5Map1024.png" border="0" height="793" width="1024">
-<img style="position:absolute;left:210px;" src="../map1024tbak2.gif" usemap="#map1" border="0" height="793" width="1024">
+<img style="position:absolute;left:210px;" src="../overlay.png" usemap="#map1" border="0" height="793" width="1024">
 
 <img class="octagon" name="holder" id="holder" src="../blancOctagon.gif" alt="Holder" onmouseover="setActiveStyleSheet('bigger');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
@@ -248,9 +248,9 @@ my @params=param();
 #open(OUTPUT,">/tmp/output");
 
 my $sectorid=param("sectorid");
-my $backgrounds="";
+my $backgrounds=" ";
 my $icons="";
-my $visibility="";
+my $visibility=" ";
 my $rebelvisibility;
 my $scionvisibility;
 
@@ -286,8 +286,7 @@ foreach my $param (sort @params){
 if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
 	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons' where id=$sectorid");
 	$sth->execute();
-#	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='generateoct.pl?$sectorid'>generate sector</a><br><a href='generateglobalmap.pl'>generate global map</a></div>";
-	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='showdb.pl'>showdb & generate octagons</a></div>";
+	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='showdb.pl'>showdb & generate octagons</a><br><a href='colorglobalmap.pl'>update global overlay</a></div>";
 }else{
 	print "<div class='controltable' style='clear:both;margin-top:30px;'>error: need (at least) sector id, background, icon.</div>";
 }

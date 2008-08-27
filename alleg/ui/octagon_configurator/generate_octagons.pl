@@ -55,4 +55,5 @@ print header,start_html;
 print "octagons generated<br>";
 print "<a href='bin/display.pl'>back to global map</a><br>";
 print "<a href='bin/showdb.pl'>back to show db</a><br>";
+print "<a href='bin/colorglobalmap.pl'>update global overlay</a><br>";
 print end_html;
