@@ -13,7 +13,8 @@ $sth->execute();
 print header,start_html;
 
 print "<a href='../generate_octagons.pl'>generate octagons</a><br>";
-print "<a href='display.pl'>back to global map</a>";
+print "<a href='display.pl'>back to global map</a><br>";
+print "<a href='colorglobalmap.pl'>update global overlay</a><br>";
 
 print "<table border='1'>\n";
 print "<tr><th>sector id</th><th>sector name</th><th>visibility</th><th>backgrounds</th><th>icons</th></tr>\n";

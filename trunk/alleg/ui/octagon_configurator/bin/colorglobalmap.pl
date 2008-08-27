@@ -18,12 +18,17 @@ $sth->execute();
 
 
 $img = newFromGif GD::Image('../map1024tbak2.gif');
-open(OUTPUT,">/tmp/a.png");
+open(OUTPUT,">../overlay.png");
 
 #$img->copy(newFromGif GD::Image('/home/jctong/workarea/afcmg/sector3EmptyMoneyTechIcons.gif'),0,0,0,0,300,300);
 
-my $yellow = $img->colorAllocate(255,250,205);
+my $yellow = $img->colorAllocate(255,255,0);
 my $blue = $img->colorAllocate(0,0,255);
+
+my @x=(0,5,10,10,5,-5,-10,-10,-5);
+my @y=(0,-10,-5,5,10,10,5,-5,-10);
+
+print header,start_html;
 
 while(my($sector_name,$backgrounds,$visibility,$location)=$sth->fetchrow_array()){
 
@@ -33,21 +38,23 @@ while(my($sector_name,$backgrounds,$visibility,$location)=$sth->fetchrow_array()
 		$background =~s/\s$//;
 		if($background ne ""){
 			$background=~/sector(\d)Background(\w+)\.gif/;
+			my $sector=$1;
+			my $color=$2;
 			my($x,$y)=split(/,/,$location);
-			$fillx=$x-10;
-			$filly=$y-5;
-			$img->fill($fillx,$filly,$blue);
-			print "$sector_name $x $y $fillx $filly done\n";
+			$fillx=$x+$x[$sector];
+			$filly=$y+$y[$sector];
+			if($color eq 'Blue'){
+				$img->fill($fillx,$filly,$blue);
+			}elsif($color eq 'Yellow'){
+				$img->fill($fillx,$filly,$yellow);
+			}
+			print "$sector_name $x $y $fillx $filly done<br>\n";
 		}
 	}
-
-
 }
 
 print OUTPUT $img->png;
 
-#print header,start_html;
-#print "octagons generated<br>";
-#print "<a href='bin/display.pl'>back to global map</a><br>";
-#print "<a href='bin/showdb.pl'>back to show db</a><br>";
-#print end_html;
+print "<a href='display.pl'>back to global map</a><br>";
+print "<a href='showdb.pl'>back to show db & generate octagons</a><br>";
+print end_html;
