@@ -47,6 +47,16 @@ while(($sector_name,$available_techs,$treasures,$total_cash,$resources,$starting
 		}
 	}
 
+#grey backgrounds only (to erase)
+	@backgrounds=split(/ /,$backgrounds);
+	foreach my $background (@backgrounds){
+		$background =~s/^\s//;
+		$background =~s/\s$//;
+		if($background=~/Grey/){	
+			$file="/home/jctong/workarea/afcmg/$background";
+			$img->copy(newFromGif GD::Image($file),0,0,0,0,300,300);
+		}
+	}
 
 	print OUTPUT $img->png;
 }
