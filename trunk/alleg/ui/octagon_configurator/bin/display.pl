@@ -58,9 +58,6 @@ $output2 = <<END2;
 
 <div class="controltable">
 Sector ID <input type="text" name="0.sectorid" id="sectorid" value="" size="3"><br>
-Visibility<br>
-<input type="checkbox" name="0.rebelvisibility">Rebels</input><br>
-<input type="checkbox" name="0.scionvisibility">Scions</input><br>
 </div>
 <div class="xtracontroltable">
 <p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"><br><input type="reset" value="Reset"></p>
@@ -83,6 +80,7 @@ Visibility<br>
 <input type="checkbox" name="7.light" value="sector7Light.gif">Light</input><br>
 <input type="checkbox" name="7.0yellow" value="sector7BackgroundYellow.gif">Yellow</input><br> 
 <input type="checkbox" name="7.0blue" value="sector7BackgroundBlue.gif">Blue</input><br> 
+<input type="checkbox" name="7.0grey" value="sector7BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="7.one" value="sector7One.gif">+1</input><br> 
 <input type="checkbox" name="7.two" value="sector7Two.gif">+2</input><br> 
 <input type="checkbox" name="7.upgonce" value="sector7UpgradeOnce.gif">Upgrade Once</input><br> 
@@ -99,6 +97,7 @@ Visibility<br>
 <input type="checkbox" name="8.light" value="sector8Light.gif">L</input> 
 <input type="checkbox" name="8.0yellow" value="sector8BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="8.0blue" value="sector8BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="8.0grey" value="sector8BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="8.one" value="sector8One.gif">+1</input> 
 <input type="checkbox" name="8.two" value="sector8Two.gif">+2</input> 
 <input type="checkbox" name="8.upgonce" value="sector8UpgradeOnce.gif">U</input> 
@@ -115,6 +114,7 @@ Visibility<br>
 <input type="checkbox" name="1.light" value="sector1Light.gif">L</input> 
 <input type="checkbox" name="1.0yellow" value="sector1BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="1.0blue" value="sector1BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="1.0grey" value="sector1BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="1.one" value="sector1One.gif">+1</input> 
 <input type="checkbox" name="1.two" value="sector1Two.gif">+2</input> 
 <input type="checkbox" name="1.upgonce" value="sector1UpgradeOnce.gif">U</input> 
@@ -131,6 +131,7 @@ Visibility<br>
 <input type="checkbox" name="2.light" value="sector2Light.gif">L</input> 
 <input type="checkbox" name="2.0yellow" value="sector2BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="2.0blue" value="sector2BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="2.0grey" value="sector2BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="2.one" value="sector2One.gif">+1</input> 
 <input type="checkbox" name="2.two" value="sector2Two.gif">+2</input> 
 <input type="checkbox" name="2.upgonce" value="sector2UpgradeOnce.gif">U</input> 
@@ -146,6 +147,7 @@ Visibility<br>
 <div class="xtracontroltable">
 <input type="checkbox" name="4.0yellow" value="sector4BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="4.0blue" value="sector4BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="4.0grey" value="sector4BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="4.one" value="sector4One.gif">+1</input> 
 <input type="checkbox" name="4.two" value="sector4Two.gif">+2</input> 
 <input type="checkbox" name="4.upgonce" value="sector4UpgradeOnce.gif">U</input> 
@@ -160,6 +162,7 @@ Visibility<br>
 <div class="xtracontroltable">
 <input type="checkbox" name="5.0yellow" value="sector5BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="5.0blue" value="sector5BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="5.0grey" value="sector5BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="5.one" value="sector5One.gif">+1</input> 
 <input type="checkbox" name="5.two" value="sector5Two.gif">+2</input> 
 <input type="checkbox" name="5.upgonce" value="sector5UpgradeOnce.gif">U</input> 
@@ -174,6 +177,7 @@ Visibility<br>
 <div class="xtracontroltable">
 <input type="checkbox" name="6.0yellow" value="sector6BackgroundYellow.gif">Y</input> 
 <input type="checkbox" name="6.0blue" value="sector6BackgroundBlue.gif">B</input> 
+<input type="checkbox" name="6.0grey" value="sector6BackgroundGrey.gif">Grey</input><br> 
 <input type="checkbox" name="6.one" value="sector6One.gif">+1</input> 
 <input type="checkbox" name="6.two" value="sector6Two.gif">+2</input> 
 <input type="checkbox" name="6.upgonce" value="sector6UpgradeOnce.gif">U</input> 
@@ -250,9 +254,6 @@ my @params=param();
 my $sectorid=param("sectorid");
 my $backgrounds=" ";
 my $icons="";
-my $visibility=" ";
-my $rebelvisibility;
-my $scionvisibility;
 
 foreach my $param (sort @params){
 	$value=param($param);
@@ -263,23 +264,13 @@ foreach my $param (sort @params){
 	if($param=~/submit/){
 		next;
 	}
-	if($param=~/rebelvisibility/){
-		$rebelvisibility=$value;
-		next;
-	}
-	if($param=~/scionvisibility/){
-		$scionvisibility=$value;
-		next;
-	}
-
-	if($param=~/0blue|0yellow/){
+	if($param=~/0blue|0yellow|0grey/){
 		$backgrounds=$backgrounds." ".$value;
 	}else{
 		$icons=$icons." ".$value;
 	}
 }
 
-#print OUTPUT "$sectorid r:$rebelvisibility s:$scionvisibility\n";
 #print OUTPUT "backgrounds: $backgrounds\n";
 #print OUTPUT "icons: $icons\n";
 
@@ -289,17 +280,6 @@ if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
 	print "<div class='controltable' style='clear:both;margin-top:30px;'><a href='showdb.pl'>showdb & generate octagons</a><br><a href='colorglobalmap.pl'>update global overlay</a></div>";
 }else{
 	print "<div class='controltable' style='clear:both;margin-top:30px;'>error: need (at least) sector id, background, icon.</div>";
-}
-
-if($rebelvisibility eq "on"){
-	$visibility=$visibility." rebels";
-}
-if($scionvisibility eq "on"){
-	$visibility=$visibility." scions";
-}
-if($visibility ne ""){
-	$sth=$dbh->prepare("update afcoc set visibility='$visibility' where id=$sectorid");
-	$sth->execute();
 }
 
 print $output3;
