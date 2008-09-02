@@ -97,4 +97,21 @@ $img->fgcolor('white');
 $img->filledArc($x1,$y1,20,20,30,330,$white,gdEdged);
 
 
+$x=1; $y=4;
+$x1=10+($xstep*$x);
+$y1=10+($ystep*$y);
+$img->moveTo($x1,$y1);
+$img->fontsize(30);
+$img->string('size 30');
+
+
+$x=4; $y=3;
+$x1=10+($xstep*$x);
+$y1=10+($ystep*$y);
+$img->moveTo($x1,$y1);
+$img->fontsize(50);
+$img->angle(-90);
+$img->string('size 50, angle -90');
+
+
 print $img->png;
