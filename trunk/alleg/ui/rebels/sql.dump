@@ -1,0 +1,85 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.3deb1ubuntu1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Aug 09, 2008 at 05:53 AM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.4-2ubuntu5.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `alleg`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `afcoc`
+--
+
+CREATE TABLE IF NOT EXISTS `afcoc` (
+  `id` int(100) NOT NULL auto_increment,
+  `sector_name` varchar(100) NOT NULL,
+  `available_techs` varchar(100) NOT NULL,
+  `treasures` varchar(100) NOT NULL,
+  `total_cash` varchar(100) NOT NULL,
+  `resources` varchar(100) NOT NULL,
+  `starting_cash` varchar(100) NOT NULL,
+  `map` varchar(100) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+
+--
+-- Dumping data for table `afcoc`
+--
+
+INSERT INTO `afcoc` (`id`, `sector_name`, `available_techs`, `treasures`, `total_cash`, `resources`, `starting_cash`, `map`, `location`) VALUES
+(1, 'Jupiter', 'Tac Exp Sup', '2', '4', '4', '3', 'LargeHighHigher', '514,679'),
+(2, 'Rebel', 'Tac Exp Sup', '2', '4', '4', '3', 'LargeHighHigher', '514,123'),
+(3, 'Gobo', 'Tac Exp Sup', '3', '5', '4', '3', 'LargeStar', '695,400'),
+(4, 'Yavin', 'Sup', '1', '1', '5', '3', 'InsideOut', '605,492'),
+(5, 'Helios', 'Tac Exp Sup', '3', '6', '6', '6', 'Sapphire', '237,492'),
+(6, 'Rigel', 'Tac Exp Sup', '3', '5', '1', '3', 'Jade', '792,492'),
+(7, 'Ploor', 'Tac Exp Sup', '2', '5', '7', '2', 'LargeStar', '605,308'),
+(8, 'Delgon', 'Tac Exp Sup', '2', '7', '3', '1', 'Sapphire', '932,679'),
+(9, 'Velantia', 'Tac Exp Sup', '2', '4', '4', '3', 'Palladium', '696,633'),
+(10, 'Denom', 'Tac', '1', '5', '5', '3', 'LargeStar', '422,492'),
+(11, 'Thrale', 'Tac Exp Sup', '3', '2', '8', '4', 'LargeSplit', '330,400'),
+(12, 'Eich', 'Exp', '1', '1', '5', '2', 'LargeSplit', '514,308'),
+(13, 'Arisia', 'Tac Exp Sup', '2', '3', '8', '6', 'Sliver', '792,586'),
+(14, 'Mars', 'Tac Exp Sup', '2', '2', '4', '3', 'PolishedDiamond', '695,168'),
+(15, 'Venus', 'Tac Exp Sup', '2', '5', '2', '2', 'Kill', '792,214'),
+(16, 'Saturn', 'Tac Exp Sup', '2', '4', '3', '6', 'Blender', '330,168'),
+(17, 'Neptune', 'Tac Exp Sup', '2', '6', '4', '3', 'Star', '330,633'),
+(18, 'Pluto', 'Tac Exp Sup', '2', '3', '7', '5', 'Topaz', '144,586'),
+(19, 'Mercury', 'Tac Exp Sup', '2', '7', '6', '2', 'Ruby', '94,119'),
+(20, 'Metis', 'Tac Exp Sup', '2', '4', '4', '2', 'SplitMix', '882,308'),
+(21, 'Thebe', 'Sup Exp', '1', '2', '5', '4', 'LargeGrid', '605,400'),
+(22, 'Leda', 'Tac Sup', '1', '4', '5', '3', 'PolishedDiamond', '514,492'),
+(23, 'Callisto', 'Tac Exp Sup', '3', '1', '4', '3', 'InsideOut', '237,307'),
+(24, 'Pan', 'Tac Exp Sup', '2', '3', '3', '5', 'HighHigher', '422,307'),
+(25, 'Atlas', 'Tac Exp Sup', '3', '4', '2', '2', 'Star', '792,308'),
+(26, 'Titan', 'Tac Exp Sup', '2', '7', '4', '4', 'LimitedDiamond', '237,586'),
+(27, 'Rhea', 'Tac Exp Sup', '2', '6', '3', '3', 'Platinum', '422,167'),
+(28, 'Io', 'Tac Exp Sup', '2', '1', '4', '2', 'Palladium', '423,633'),
+(29, 'Ariel', 'Tac Exp Sup', '2', '5', '3', '3', 'SplitMix', '140,307'),
+(30, 'Oberon', 'Tac Exp Sup', '2', '3', '4', '4', 'Platinum', '557,214'),
+(31, 'Umbriel', 'Tac Exp Sup', '2', '4', '3', '3', 'Blender', '882,492'),
+(32, 'Despina', 'Tac Exp Sup', '2', '3', '7', '5', 'Ruby', '234,214'),
+(33, 'Triton', 'Tac Exp Sup', '2', '4', '4', '3', 'Chaos', '470,214'),
+(34, 'Gala', 'Tac Exp Sup', '2', '2', '8', '4', 'Destroy', '605,633'),
+(35, 'Charon', 'Tac Exp Sup', '2', '5', '4', '1', 'Kill', '558,586'),
+(36, 'Phobos', 'Tac Exp Sup', '2', '2', '1', '2', 'Chaos', '468,586'),
+(37, 'Pook', 'Tac Exp Sup', '2', '4', '4', '5', 'Jade', '603,168'),
+(38, 'Solap', 'Tac Exp Sup', '2', '8', '5', '7', 'Palladium', '144,492'),
+(39, 'Thalgor', 'Tac Exp Sup', '2', '1', '1', '1', 'LargeHighHigher', '94,679'),
+(40, 'Titty Baby', 'Tac Exp Sup', '2', '4', '4', '4', 'Topaz', '930,120'),
+(41, 'Lyra', 'Tac Exp', '1', '2', '5', '3', 'InsideOut', '422,400'),
+(42, 'Optimus', 'Tac Exp Sup', '2', '7', '2', '4', 'LargeGrid', '930,400'),
+(43, 'Fwiffo', 'Tac Exp Sup', '2', '2', '4', '2', 'Sliver', '144,214'),
+(44, 'FreeBeer', 'Tac Exp Sup', '2', '5', '4', '3', 'LargeStar', '94,400'),
+(45, 'Cowbell', 'Tac Exp Sup', '2', '3', '3', '2', 'LimitedDiamond', '882,214'),
+(46, 'Sp4wn', 'Tac Exp Sup', '2', '6', '4', '3', 'Star', '882,586');

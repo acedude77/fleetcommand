@@ -1,0 +1,18 @@
+img.octagon {
+	width:200px;
+	height:200px;
+	position:relative;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+div.controls {
+	clear:both;
+        top:312px;
+        position:absolute;
+        float:left;
+        background-color:#FFFFFF;
+        border:1px solid #000000;
+	padding:0 0 20px 0;
+}
+
