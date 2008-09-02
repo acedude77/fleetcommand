@@ -1,0 +1,19 @@
+img.octagon {
+	width:200px;
+	height:200px;
+	position:relative;
+	float:left;
+	background-color:#FFFFFF;
+}
+div.controls {
+	clear:both;
+	white-space:nowrap;
+        top:312px;
+        position:absolute;
+        background-color:#FFFFFF;
+        #border:1px solid #000000;
+}
+
+div.xtracontroltable {
+	display:none;
+}

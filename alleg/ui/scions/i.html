@@ -1,0 +1,45 @@
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+  <!--
+  //JavaScript Disjointed Imagemap Code
+  //copyright daxassist, 2000-2004
+  //visit http://www.daxassist.com for this and other javascripts with full tutorials.
+
+  if(document.images) {
+    pics = new Array();
+    pics[00] = new Image();
+    pics[00].src = "blancOctagon.gif";
+    pics[01] = new Image();
+    pics[01].src = "Jupiter.png";
+    pics[02] = new Image();
+    pics[02].src = "largeimage02.gif";
+    pics[03] = new Image();
+    pics[03].src = "largeimage03.gif";
+    pics[04] = new Image();
+    pics[04].src = "holderimage.gif";
+  }
+    function changer(from,to) {
+    if(document.images) {
+    document.images[from].src = pics[to].src;
+    }
+  }
+  //-->
+</SCRIPT>
+</head>
+
+
+<body>
+
+<img src="AW5Map1024.png" usemap="#map1" border="0" height="793px" width="1024px">
+<img name="holder" id="holder" src="blancOctagon.gif" width="200" height="200" border="0" alt="Holder">  
+
+
+
+<map name="map1">
+<area shape="rect" coords="0,0,100,100" onmouseover="changer('holder',01);" onmouseout="changer('holder',00);">
+
+</map>
+
+</body>
+</html> 
