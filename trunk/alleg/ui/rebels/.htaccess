@@ -1,2 +1,9 @@
 AddHandler cgi-script .pl
 Options +ExecCGI
+
+AuthUserFile /home/jctong/passwd/alleg
+AuthGroupFile /dev/null
+AuthName EnterPassword
+AuthType Basic
+
+require user rebels
