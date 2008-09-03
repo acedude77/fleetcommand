@@ -103,11 +103,16 @@ my @params=param();
 my $sectorid=param("sectorid");
 my $backgrounds=" ";
 my $icons="";
+my $visibility="";
 
 foreach my $param (sort @params){
 	$value=param($param);
 	if($param=~/sectorid/){
 		$sectorid=$value;
+		next;
+	}
+	if($param=~/visibility/){
+		$visibility=$visibility." ".$value;
 		next;
 	}
 	if($param=~/submit/){
@@ -120,20 +125,25 @@ foreach my $param (sort @params){
 	}
 }
 
-#print OUTPUT "backgrounds: $backgrounds\n";
-#print OUTPUT "icons: $icons\n";
 print "<body>";
+
+
+if($sectorid=~/\d+/ && $visibility ne ""){
+	$sth=$dbh->prepare("update afcoc set visibility='$visibility' where id=$sectorid");
+	$sth->execute();
+}
 
 if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
 	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons' where id=$sectorid");
 	$sth->execute();
 	print "<div class='controltable' style='position:absolute;clear:both;margin-top:230px;'><a href='showdb.pl'>showdb & generate octagons</a><br><a href='colorglobalmap.pl'>update global overlay</a></div>";
 }elsif($sectorid=~/\d+/){
-	$sth=$dbh->prepare("select backgrounds,icons from afcoc where id='$sectorid'");
+	$sth=$dbh->prepare("select visibility,backgrounds,icons from afcoc where id='$sectorid'");
 	$sth->execute();
-	my($backgrounds,$icons)=$sth->fetchrow_array();
+	my($visibility,$backgrounds,$icons)=$sth->fetchrow_array();
 
-
+	$checked_rebels=" ";
+	$checked_scions=" ";
 	foreach my $i (1..8){
 		$checked{$i}{"garr"}		=" ";
 		$checked{$i}{"outpost"}		=" ";
@@ -180,6 +190,13 @@ if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
 		$checked{$mysector}{$myicon}="checked";
 	}
 
+	if($visibility=~/rebels/){
+		$checked_rebels="checked";
+	}
+	if($visibility=~/scions/){
+		$checked_scions="checked";
+	}	
+
 }else{
 	print "<div class='controltable' style='position:absolute;clear:both;margin-top:230px;'>error: need (at least) sector id</div>";
 }
@@ -196,6 +213,10 @@ $form= <<EOFORM;
 
 <div class="controltable">
 Sector ID <input type="text" name="0.sectorid" id="sectorid" value="" size="3"><br>
+Visibility<br>
+<input type="checkbox" name="0.rebelvisibility" value="rebels" $checked_rebels>Rebels</input><br>
+<input type="checkbox" name="0.scionvisibility" value="scions" $checked_scions>Scions</input><br>
+
 </div>
 <div class="xtracontroltable">
 <p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"><br><input type="reset" value="Reset"></p>
