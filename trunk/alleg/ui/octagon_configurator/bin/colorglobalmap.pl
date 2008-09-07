@@ -26,6 +26,7 @@ my $yellow = $img->colorAllocate(255,255,0);
 my $blue = $img->colorAllocate(0,0,255);
 my $grey = $img->colorAllocate(205,201,201);
 my $red = $img->colorAllocate(255,0,0);
+my $black = $img->colorAllocate(0,0,0);
 
 
 my @x=(0,5,10,10,5,-5,-10,-10,-5);
@@ -58,7 +59,9 @@ while(my($sector_name,$backgrounds,$location,$eyed)=$sth->fetchrow_array()){
 		}
 	}
 	if($eyed eq 'yes'){
-		$img->filledEllipse($x,$y,8,8,$red);
+		$img->filledEllipse($x,$y,12,8,$red);
+		$img->ellipse($x,$y,12,8,$black);
+		$img->filledEllipse($x,$y,4,4,$black);
 		print "marked $sector_name eyed<br>\n";
 	}
 }
