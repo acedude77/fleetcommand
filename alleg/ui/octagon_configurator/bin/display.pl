@@ -44,6 +44,7 @@ $output2 = <<END2;
 <link rel="stylesheet" type="text/css" href="style.css" />
 <link rel="alternate stylesheet" type="text/css" href="bigger.css" title="bigger" />
 <link rel="alternate stylesheet" type="text/css" href="bigcontrol.css" title="bigcontrol" />
+<link rel="alternate stylesheet" type="text/css" href="legenda.css" title="legenda" />
 </head>
 END2
 
@@ -199,6 +200,8 @@ $form= <<EOFORM;
 <form action="display.pl" method="post">
 <img style="position:absolute;left:210px;" src="../AW5Map1024.png" border="0" height="793" width="1024">
 <img style="position:absolute;left:210px;" src="../overlay.png" usemap="#map1" border="0" height="793" width="1024">
+
+<img class="legenda" src="../LegendaProposal1.gif" border="0" height="80" width="260" onmouseover="setActiveStyleSheet('legenda');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
 <img class="octagon" name="holder" id="holder" src="../blancOctagon.gif" alt="Holder" onmouseover="setActiveStyleSheet('bigger');return false;" onmouseout="setActiveStyleSheet('smaller');return false;">
 
