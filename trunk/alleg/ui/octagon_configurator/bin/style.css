@@ -3,6 +3,13 @@
     width: 100%;
 }
 
+img.legenda {
+	position:relative;
+	float:right;
+	top:2px;
+	right:22px;
+}
+
 a.button {
     background: transparent url('bg_button_a.gif') no-repeat scroll top right;
     color: #444;
