@@ -21,6 +21,7 @@ while(($sector_name,$available_techs,$treasures,$total_cash,$resources,$starting
 	open(OUTPUT,">$filename");
 	$img = newFromGif GD::Image('/home/jctong/workarea/afcmg/sector3Grey.gif');
 	$img->copy(newFromGif GD::Image('/home/jctong/workarea/afcmg/sector3EmptyMoneyTechIcons.gif'),0,0,0,0,300,300);
+	$img->copy(newFromGif GD::Image('/home/jctong/workarea/afcmg/blancOctagon.gif'),0,0,0,0,300,300);
 
 	&moneysetting2(0,0,$available_techs,$treasures,$total_cash,$resources,$starting_cash);
 
