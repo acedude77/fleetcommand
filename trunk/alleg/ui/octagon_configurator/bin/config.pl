@@ -4,12 +4,12 @@ use CGI qw(:standard);
 
 use DBI;
 
-my $user='root';
-my $pass='';
+my $user='alleguser';
+my $pass='pZbDdzuW.tmXMvqX';
 my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
-my $sth=$dbh->prepare('select sector_name,location from afcoc');
+my $sth=$dbh->prepare('insert into afcoc (');
 $sth->execute();
 
 while(@row=$sth->fetchrow_array()){
