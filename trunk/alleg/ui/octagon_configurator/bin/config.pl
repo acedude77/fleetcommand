@@ -9,12 +9,8 @@ my $pass='pZbDdzuW.tmXMvqX';
 my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
-my $sth=$dbh->prepare('insert into afcoc (');
+my $sth=$dbh->prepare('insert into sprites (location,sprite_type,team) values (?,?,?)');
 $sth->execute();
-
-while(@row=$sth->fetchrow_array()){
-	$loc{"$row[1]"}=$row[0];	
-}
 
 print header;
 
@@ -50,22 +46,8 @@ x = <input type="text" name="form_x" size="4" />
 <br>
 y = <input type="text" name="form_y" size="4" />
 <br>
-location: <input type="text" name="location">
-<br>
-Available Techs<br>
-<input type="checkbox" name="tac" value="1"> Tac
-<br>
-<input type="checkbox" name="exp" value="1"> Exp
-<br>
-<input type="checkbox" name="sup" value="1"> Sup
-<br>
-Treasures: <input type="input" name="treasures" size="2" maxlength="2">
-<br>
-Starting Cash: <input type="input" name="starting_cash" size="2" maxlength="2">
-<br>
-Total Cash: <input type="input" name="total_cash" size="2" maxlength="2">
-<br>
-Resources: <input type="input" name="resources" size="2" maxlength="2">
+<input type="radio" name="team" value="blue"> Blue
+<input type="radio" name="team" value="yellow"> Yellow
 <br>
 
 <input type="submit">
@@ -74,43 +56,18 @@ END
 
 print $indexhtml;
 
+$submit=param('submit');
 $x=param('form_x');
 $y=param('form_y');
-$sector=param('sector');
-$color=param('color');
-$baseicon=param('baseicon');
-$constructor=param('constructor');
-$one=param('one');
-$two=param('two');
-$outpost=param('outpost');
-$shipyard=param('shipyard');
-$sup=param('sup');
-$tac=param('tac');
-$garr=param('garr');
-$upg1=param('upg1');
-$upg2=param('upg2');
+$team=param('team');
 
-#$x1=$x-15;
-#$y1=$y-15;
-#$x2=$x+16;
-#$y2=$y+14;
+if(param() && $x ne "" && $team ne ""){
+	my $location=$x.",".$y;
+	$sth->execute($location,"mine_field",$team);
+	$lastid=$sth->{'mysql_insertid'};
 
-
-foreach $xy (keys(%loc)){
-	($loc_x,$loc_y)=split(/,/,$xy);
-	$delta_x=abs($loc_x - $x);
-	$delta_y=abs($loc_y - $y);
-	if(($delta_x < 15) && ($delta_y < 15)){
-		$sector_name=$loc{"$loc_x,$loc_y"};
-	}
+	print "<div>id:$lastid<br>location: $location<br>team: $team</div>";
 }
 
-print "<div>$x $y $sector_name</div>";
-
-#open(OUTPUT,">>output.txt");
-
-#print OUTPUT qq^<area shape=rect coords=\"$x1,$y1,$x2,$y2\" href="javascript:alert('$sector')">\n^;
-print OUTPUT qq^<area shape=rect coords=\"$x,$y\" href="javascript:alert('$sector')">\n^;
-#print qq^<meta http-equiv="REFRESH" content="0;url=../index.html">^; 
 print end_html;
 

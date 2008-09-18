@@ -66,6 +66,12 @@ while(my($sector_name,$backgrounds,$location,$eyed)=$sth->fetchrow_array()){
 	}
 }
 
+### sprites
+my $sth=$dbh->prepare('select id,location,sprite_type,team from sprites');
+$sth->execute();
+
+
+
 print OUTPUT $img->png;
 
 print "<a href='display.pl'>back to global map</a><br>";
