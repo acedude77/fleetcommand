@@ -9,7 +9,7 @@ my $pass='pZbDdzuW.tmXMvqX';
 my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
-my $sth=$dbh->prepare('insert into sprites (location,sprite_type,team) values (?,?,?)');
+my $sth=$dbh->prepare('insert into sprites (location,sprite_type,team,visibility) values (?,?,?)');
 $sth->execute();
 
 print header;
@@ -45,10 +45,12 @@ function point_it(event){
 x = <input type="text" name="form_x" size="4" />
 <br>
 y = <input type="text" name="form_y" size="4" />
-<br>
+<br>Team:
 <input type="radio" name="team" value="blue"> Blue
 <input type="radio" name="team" value="yellow"> Yellow
-<br>
+<br>Visible to:
+<input type="checkbox" name="bvis" value="blue"> Blue
+<input type="checkbox" name="yvis" value="yellow"> Yellow
 
 <input type="submit">
 </form>
@@ -60,14 +62,29 @@ $submit=param('submit');
 $x=param('form_x');
 $y=param('form_y');
 $team=param('team');
+$bvis=param('bvis');
+$yvis=param('yvis');
+$visibility=" ";
+
+if($team=~/blue/){
+	$visibility=$visibility."blue ";
+	if ($yvis=~/yellow/){
+		$visibility=$visibility."yellow ";
+	}
+}
+if($team=~/yellow/){
+	$visibility=$visibility."yellow ";
+	if ($bvis=~/blue/){
+		$visibility=$visibility."blue ";
+	}
+}
 
 if(param() && $x ne "" && $team ne ""){
 	my $location=$x.",".$y;
-	$sth->execute($location,"mine_field",$team);
+	$sth->execute($location,"mine_field",$team,$visibility);
 	$lastid=$sth->{'mysql_insertid'};
 
-	print "<div>id:$lastid<br>location: $location<br>team: $team</div>";
+	print "<div>id:$lastid<br>location: $location<br>team: $team<br>visible to: $visibility</div>";
 }
 
 print end_html;
-

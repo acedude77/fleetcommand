@@ -1,17 +1,23 @@
 img.octagon {
 	width:300px;
 	height:300px;
-	position:absolute;
+	position:relative;
 	float:left;
 	background-color:#FFFFFF;
 }
-
-img.legenda {
-}
-
 div.controls {
+	clear:both;
+	white-space:nowrap;
         top:312px;
         position:absolute;
         background-color:#FFFFFF;
         #border:1px solid #000000;
+}
+img.legenda {
+	background-color:#003366;
+	height:595px;
+	width:547px;
+}
+div.xtracontroltable {
+	display:none;
 }

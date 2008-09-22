@@ -12,11 +12,11 @@ my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
 
-my $sth=$dbh->prepare('select sector_name,available_techs,treasures,total_cash,resources,starting_cash,map,backgrounds,icons from afcoc');
+my $sth=$dbh->prepare('select sector_name,available_techs,treasures,total_cash,resources,starting_cash,map,backgrounds,icons,visibility from afcoc');
 
 $sth->execute();
 
-while(($sector_name,$available_techs,$treasures,$total_cash,$resources,$starting_cash,$map,$backgrounds,$icons)=$sth->fetchrow_array()){
+while(($sector_name,$available_techs,$treasures,$total_cash,$resources,$starting_cash,$map,$backgrounds,$icons,$visibility)=$sth->fetchrow_array()){
 	$filename=$sector_name.".png";
 	open(OUTPUT,">$filename");
 	$img = newFromGif GD::Image('/home/jctong/workarea/afcmg/sector3Grey.gif');

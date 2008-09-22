@@ -51,7 +51,7 @@ END2
 
 
 #===========gather data from db
-my $sth=$dbh->prepare('select sector_name,location,map from afcoc');
+my $sth=$dbh->prepare('select sector_name,location,map from afcoc_rebels');
 $sth->execute();
 $i=2;
 
@@ -125,11 +125,11 @@ foreach my $param (sort @params){
 print "<body>";
 
 if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne ""){
-	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons' where id=$sectorid");
+	$sth=$dbh->prepare("update afcoc_rebels set backgrounds='$backgrounds', icons='$icons' where id=$sectorid");
 	$sth->execute();
 	print "<div class='controltable' style='position:absolute;clear:both;margin-top:230px;'><a href='showdb.pl'>showdb & generate octagons</a><br><a href='colorglobalmap.pl'>update global overlay</a></div>";
 }elsif($sectorid=~/\d+/){
-	$sth=$dbh->prepare("select backgrounds,icons from afcoc where id='$sectorid'");
+	$sth=$dbh->prepare("select backgrounds,icons from afcoc_rebels where id='$sectorid'");
 	$sth->execute();
 	my($backgrounds,$icons)=$sth->fetchrow_array();
 
