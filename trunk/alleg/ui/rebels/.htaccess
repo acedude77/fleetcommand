@@ -6,4 +6,4 @@ AuthGroupFile /dev/null
 AuthName EnterPassword
 AuthType Basic
 
-require user rebels
+require user rebels admin

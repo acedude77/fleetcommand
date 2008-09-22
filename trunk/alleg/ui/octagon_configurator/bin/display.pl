@@ -103,8 +103,11 @@ my @params=param();
 
 my $sectorid=param("sectorid");
 my $backgrounds=" ";
+my $visibility=" ";
 my $icons="";
 my $eyed="";
+my $yvis="";
+my $bvis="";
 
 foreach my $param (sort @params){
 	$value=param($param);
@@ -121,6 +124,15 @@ foreach my $param (sort @params){
 	}
 	if($param=~/0blue|0yellow|0grey/){
 		$backgrounds=$backgrounds." ".$value;
+		next;
+	}
+	if($param=~/bvis/ && $value=~/bluevis/){
+		$visibility=$visibility."blue ";
+		next;
+	}
+	if($param=~/yvis/ && $value=~/yellowvis/){
+		$visibility=$visibility."yellow ";
+		next;	
 	}else{
 		$icons=$icons." ".$value;
 	}
@@ -131,17 +143,17 @@ if($eyed eq ""){
 }
 
 print "<body>";
-
 if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne "" && $eyed ne ""){
-	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons', eyed='$eyed' where id=$sectorid");
+	$sth=$dbh->prepare("update afcoc set backgrounds='$backgrounds', icons='$icons', eyed='$eyed',visibility='$visibility' where id=$sectorid");
 	$sth->execute();
 	print "<div class='controltable' style='position:absolute;clear:both;margin-top:230px;'><a href='showdb.pl'>showdb & generate octagons</a><br><a href='colorglobalmap.pl'>update global overlay</a></div>";
 }elsif($sectorid=~/\d+/){
-	$sth=$dbh->prepare("select eyed,backgrounds,icons from afcoc where id='$sectorid'");
+	$sth=$dbh->prepare("select eyed,backgrounds,icons,visibility from afcoc where id='$sectorid'");
 	$sth->execute();
-	my($eyed,$backgrounds,$icons)=$sth->fetchrow_array();
-
+	my($eyed,$backgrounds,$icons,$visibility)=$sth->fetchrow_array();
 	$checked_eyed=" ";
+	$checked_bvis=" ";
+	$checked_yvis=" ";
 	foreach my $i (1..8){
 		$checked{$i}{"garr"}		=" ";
 		$checked{$i}{"outpost"}		=" ";
@@ -191,10 +203,15 @@ if($sectorid=~/\d+/ && $backgrounds ne "" && $icons ne "" && $eyed ne ""){
 	if($eyed=~/yes/){
 		$checked_eyed="checked";
 	}
+	if($visibility=~/blue/){
+		$checked_bvis="checked";
+	}
+	if($visibility=~/yellow/){
+		$checked_yvis="checked";
+	}
 }else{
 	print "<div class='controltable' style='position:absolute;clear:both;margin-top:230px;'>error: need (at least) sector id</div>";
 }
-
 
 $form= <<EOFORM;
 <form action="display.pl" method="post">
@@ -210,6 +227,7 @@ $form= <<EOFORM;
 <div class="controltable">
 Sector ID <input type="text" name="0.sectorid" id="sectorid" value="" size="3"><br>
 <input type="checkbox" name="0.eyed" value="yes" $checked_eyed>Eyed</input><br>
+Visible to:<input type="checkbox" name="0.bvis" value="bluevis" $checked_bvis>Blue</input><input type="checkbox" name="0.yvis" value="yellowvis" $checked_yvis>Yellow</input><br>
 </div>
 <div class="xtracontroltable">
 <p style="text-align:center"><input style="padding:0 0 2 2;" type="submit" name="0.submit" value="Submit"><br><input type="reset" value="Reset"></p>
