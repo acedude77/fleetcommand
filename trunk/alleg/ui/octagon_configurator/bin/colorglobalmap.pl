@@ -67,10 +67,11 @@ while(my($sector_name,$backgrounds,$location,$eyed)=$sth->fetchrow_array()){
 }
 
 ### sprites
-my $sth=$dbh->prepare('select id,location,sprite_type,team from sprites');
+my $sth=$dbh->prepare('select id,location,sprite_type,team,visibility from sprites');
 $sth->execute();
 
-
+while(my($id,$location,$sprite_type,$team,$visibility)=$sth->fetchrow_array()){
+}
 
 print OUTPUT $img->png;
 

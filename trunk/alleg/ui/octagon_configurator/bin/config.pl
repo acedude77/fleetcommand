@@ -9,7 +9,7 @@ my $pass='pZbDdzuW.tmXMvqX';
 my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
-my $sth=$dbh->prepare('insert into sprites (location,sprite_type,team,visibility) values (?,?,?)');
+my $sth=$dbh->prepare('insert into sprites (location,sprite_type,team,visibility) values (?,?,?,?)');
 $sth->execute();
 
 print header;
