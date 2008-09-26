@@ -13,10 +13,12 @@ my $dbh=DBI->connect($dsn,$user,$pass);
 
 
 my $visibility=$ARGV[0];
+$visibility="yellow";
 
-my $sth=$dbh->prepare('select sector_name,backgrounds,location,eyed from afcoc');
 
-$sth->execute();
+my $sth=$dbh->prepare('select sector_name,backgrounds,location,eyed from afcoc where visibility regexp ?');
+
+$sth->execute($visibility);
 
 
 $img = newFromGif GD::Image('../map1024tbak2.gif');
@@ -69,13 +71,13 @@ while(my($sector_name,$backgrounds,$location,$eyed)=$sth->fetchrow_array()){
 }
 
 ### sprites
-my $sth=$dbh->prepare('select id,location,sprite_type,team from sprites');
-$sth->execute();
+$sth=$dbh->prepare('select id,location,sprite_type,team from sprites where visibility regexp ?');
+$sth->execute($visibility);
 
 while(my($id,$location,$sprite_type,$team)=$sth->fetchrow_array()){
-
-
-
+	my($x,$y)=split(/,/,$location);
+	$img->filledEllipse($x,$y,9,9,$red);
+	print "$team $sprite_type at $x $y<br>";
 }
 
 print OUTPUT $img->png;
