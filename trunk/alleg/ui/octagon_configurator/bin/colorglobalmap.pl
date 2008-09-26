@@ -12,6 +12,8 @@ my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
 
+my $visibility=$ARGV[0];
+
 my $sth=$dbh->prepare('select sector_name,backgrounds,location,eyed from afcoc');
 
 $sth->execute();
@@ -67,10 +69,13 @@ while(my($sector_name,$backgrounds,$location,$eyed)=$sth->fetchrow_array()){
 }
 
 ### sprites
-my $sth=$dbh->prepare('select id,location,sprite_type,team,visibility from sprites');
+my $sth=$dbh->prepare('select id,location,sprite_type,team from sprites');
 $sth->execute();
 
-while(my($id,$location,$sprite_type,$team,$visibility)=$sth->fetchrow_array()){
+while(my($id,$location,$sprite_type,$team)=$sth->fetchrow_array()){
+
+
+
 }
 
 print OUTPUT $img->png;
