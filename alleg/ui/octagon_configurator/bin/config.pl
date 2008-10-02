@@ -36,12 +36,13 @@ function point_it(event){
 
 <body>
 <form name="pointform" method="post" action="config.pl">
-<div id="pointer_div" onClick="point_it(event)" style = "background-image:url('./AW5Map1024.png');background-repeat:no-repeat;height:783px;width:1024px;float:left;clear:both;">
+<img src="../AW5Map1024.png" border="0" height="793" width="1024" style="position:absolute;">
+<div id="pointer_div" onClick="point_it(event)" style = "background-image:url('../overlay.png');position:absolute;background-repeat:no-repeat;height:783px;width:1024px;float:left;clear:both;">
 <img src="./square.gif" id="square" style="position:relative;visibility:hidden;z-index:2;filter:alpha(opacity=40);opacity:0.4;">
 </div>
 
 
-
+<div style="float:right;">
 x = <input type="text" name="form_x" size="4" />
 <br>
 y = <input type="text" name="form_y" size="4" />
@@ -51,8 +52,13 @@ y = <input type="text" name="form_y" size="4" />
 <br>Visible to:
 <input type="checkbox" name="bvis" value="blue"> Blue
 <input type="checkbox" name="yvis" value="yellow"> Yellow
-
+<br>
 <input type="submit">
+<br>
+<br>
+<br>
+<a href="colorglobalmap.pl">update global map</a>
+</div>
 </form>
 END
 

@@ -84,4 +84,5 @@ print OUTPUT $img->png;
 
 print "<a href='display.pl'>back to global map</a><br>";
 print "<a href='showdb.pl'>back to show db & generate octagons</a><br>";
+print "<a href='config.pl'>back to adding more sprites (minefields)</a><br>";
 print end_html;
