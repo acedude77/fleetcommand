@@ -1,0 +1,48 @@
+	<h4>Kill bonus </h4>
+	
+	<p>As we have already slightly covered, the kill bonus, indicated in the orange 
+	circle, represents a damage bonus in percentage. It is calculated by the following formula:</p>
+	
+	<p align="left"><font face="Courier New, Courier, mono">Kill 
+	Bonus = Kills / (Kills+4) * 50<br>
+
+	ex.: You have 3 kills - KB = 3 / (3+4) * 50 = 21.4285 = 21 (rounded to nearest whole number)</font></p>
+
+
+
+<script type="text/javascript">
+
+function test1(){
+ var bonus;
+ var kills=document.getElementById("kills").value * 1;
+ bonus=kills/(kills+4)*50;
+ document.getElementById("kb").value=Math.round(bonus);
+}
+
+function test2(){
+ var kills;
+ var kb=document.getElementById("kb").value * 1;
+ kills=(4 * kb) / (50 - kb);
+ document.getElementById("kills").value=Math.round(kills);
+}
+
+</script>
+
+<h4>KB Calculator</h4>
+<input type="text" id="kills" onchange="test1()"> consecutive kill(s) =  <input type="text" id="kb" onchange="test2()"> KB<br>
+<br>
+
+	<p>A 10% kb will result in a 10% damage bonus. As you destroy more ships, 
+	the kill bonus slowly rises toward a maximum of 50 (396 kills). The 
+	kb cannot get any higher than 50 because it is a mathematical impossibility 
+	with the formula. Note that killing eject pods does not increase your 
+	kill bonus. Your kills bonus will apply to every weapon, missile and 
+	piece of equipment that can inflict damage.</p>
+	
+	<p>When a pod is destroyed, the pilot dies and so does the kill bonus, which 
+	is reset to 0. This is why even though a pilot has 100 kills, s/he can 
+	still have a 0 kb. The kb is only higher with the number of <b>consecutive</b> 
+	kills, without the pilot dying. Note that getting podded has no effect 
+	on your kill bonus, you won't lose anything, but get yourself rescued 
+	or you might lose it.</p>
+
