@@ -11,14 +11,26 @@ my $pass='pZbDdzuW.tmXMvqX';
 my $dsn='dbi:mysql:alleg:localhost:3306';
 my $dbh=DBI->connect($dsn,$user,$pass);
 
+my $team=$ARGV[0];
+$team='yellow';
 
-my $sth=$dbh->prepare('select sector_name,available_techs,treasures,total_cash,resources,starting_cash,map,backgrounds,icons,visibility from afcoc');
+my $sth=$dbh->prepare('select sector_name,available_techs,treasures,total_cash,resources,starting_cash,map,backgrounds,icons from afcoc where visibility regexp ?');
 
-$sth->execute();
+$sth->execute($team);
 
 while(($sector_name,$available_techs,$treasures,$total_cash,$resources,$starting_cash,$map,$backgrounds,$icons,$visibility)=$sth->fetchrow_array()){
 	$filename=$sector_name.".png";
-	open(OUTPUT,">$filename");
+
+	if($team eq 'blue'){
+		chdir("../rebels");
+		open(OUTPUT,">$filename");
+	}elsif($team eq 'yellow'){
+		chdir("../scions");
+		open(OUTPUT,">$filename");
+	}else{
+		open(OUTPUT,">$filename");
+	}
+
 	$img = newFromGif GD::Image('/home/jctong/workarea/afcmg/sector3Grey.gif');
 	$img->copy(newFromGif GD::Image('/home/jctong/workarea/afcmg/sector3EmptyMoneyTechIcons.gif'),0,0,0,0,300,300);
 	$img->copy(newFromGif GD::Image('/home/jctong/workarea/afcmg/blancOctagon.gif'),0,0,0,0,300,300);
