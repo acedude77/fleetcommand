@@ -1,17 +1,37 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.3deb1ubuntu1.1
+-- version 2.11.8.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 31, 2008 at 02:38 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.4-2ubuntu5.3
+-- Generation Time: Nov 11, 2008 at 02:33 PM
+-- Server version: 5.0.67
+-- PHP Version: 5.2.6-2ubuntu4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `allegstats`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fileinfo`
+--
+
+DROP TABLE IF EXISTS `fileinfo`;
+CREATE TABLE IF NOT EXISTS `fileinfo` (
+  `id` int(100) NOT NULL auto_increment,
+  `filename` varchar(100) NOT NULL,
+  `checksum` varchar(32) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 -- --------------------------------------------------------
 
@@ -26,8 +46,9 @@ CREATE TABLE IF NOT EXISTS `gameinfo` (
   `GameOverReason` varchar(100) NOT NULL,
   `Date` varchar(100) NOT NULL,
   `Core` varchar(100) NOT NULL,
+  `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 -- --------------------------------------------------------
 
@@ -50,8 +71,9 @@ CREATE TABLE IF NOT EXISTS `playerinfo` (
   `Assists` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `BaseCaptures` varchar(100) NOT NULL,
+  `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=672 ;
 
 -- --------------------------------------------------------
 
@@ -65,6 +87,6 @@ CREATE TABLE IF NOT EXISTS `teaminfo` (
   `Faction` varchar(100) NOT NULL,
   `TeamNumber` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
+  `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;

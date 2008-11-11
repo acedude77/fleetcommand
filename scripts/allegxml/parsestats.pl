@@ -2,12 +2,8 @@
 
 use XML::Simple;
 use DBI;
+use Digest::MD5 qw(md5_hex);
 #use Data::Dumper;
-
-my $scores = XMLin('scores-2008-6-28_14.25.xml');
-
-#print Dumper($scores);
-
 
 my $db="allegstats";
 my $host="localhost";
@@ -16,9 +12,54 @@ my $password="";
 
 my $dbh = DBI->connect ("DBI:mysql:database=$db:host=$host",$user,$password) or die "Can't connect to database: $DBI::errstr\n";
 
-my $gameinfo=$$scores{GameInfo};
-my $playersscore=$$scores{PlayersScore};
-my $teams=$$scores{Teams};
+&main;
+
+sub main {
+	my @xmlfiles=<*.xml>;
+	foreach my $xml (@xmlfiles){
+
+		my $input = `grep -v "<Date>" $xml`;
+		my $cksum = md5_hex($input);
+
+		if(alreadySeen($cksum)){
+			print "Already seen, skipping $xml.\n";
+		}else{
+			processFile($xml,$cksum);
+			print "Processed $xml.\n";
+		}
+	}
+}
+
+sub alreadySeen() {
+	my ($cksum)=@_;
+
+	my $query="select * from fileinfo where checksum=\'$cksum\'";
+	my $sth=$dbh->prepare($query);
+	$sth->execute();
+
+	my $result=$sth->fetchrow();
+	if(defined($result)){
+       		return 1;
+	}else{
+		return 0;
+	}
+}
+
+
+sub processFile(){
+	my($file,$cksum)=@_;
+
+	my $scores = XMLin($file);
+
+
+	my $query="insert into fileinfo values (NULL,\'$file\',\'$cksum\')";
+	my $sth=$dbh->prepare($query);
+	$sth->execute();
+
+
+	my $gameinfo=$$scores{GameInfo};
+	my $playersscore=$$scores{PlayersScore};
+	my $teams=$$scores{Teams};
 
 ######## GAMEINFO
 my @col;
@@ -38,8 +79,8 @@ chop($str);
 
 $" = ","; 
 
-my $query="insert into gameinfo ("."@col".") values (".$str.");";
-my $sth=$dbh->prepare($query);
+$query="insert into gameinfo ("."@col".",checksum) values (".$str.",\'$cksum\');";
+$sth=$dbh->prepare($query);
 $sth->execute();
 
 
@@ -56,8 +97,13 @@ foreach my $k1 (keys %$teams){
 	foreach my $k2 (@{$$teams{$k1}}){
 		foreach my $k3 (keys(%$k2)){
 			#print "$k1 $k3 $$k2{$k3}\n";
-			push(@col,$k3);	
-			push(@val,$$k2{$k3});
+			if($$k2{$k3}=~/HASH\(/){ #when team name is blank
+				push(@col,$k3);	
+				push(@val,"");
+			}else{
+				push(@col,$k3);	
+				push(@val,$$k2{$k3});
+			}
 		}
 		$str="";
 		foreach my $item (@val){
@@ -68,7 +114,7 @@ foreach my $k1 (keys %$teams){
 
 		$" = ",";
 
-		my $query="insert into teaminfo ("."@col".") values (".$str.");";
+		my $query="insert into teaminfo ("."@col".",checksum) values (".$str.",\'$cksum\');";
 		my $sth=$dbh->prepare($query);
 		$sth->execute();
 		undef(@col);undef(@val);
@@ -101,7 +147,7 @@ foreach my $k1 (keys %$playersscore){
 
                 $" = ",";
 
-                my $query="insert into playerinfo ("."@col".") values (".$str.");";
+                my $query="insert into playerinfo ("."@col".",checksum) values (".$str.",\'$cksum\');";
                 my $sth=$dbh->prepare($query);
                 $sth->execute();
                 undef(@col);undef(@val);
@@ -109,4 +155,4 @@ foreach my $k1 (keys %$playersscore){
 		#print "----\n";
 	}
 }
-
+}
