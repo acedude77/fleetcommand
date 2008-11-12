@@ -3,7 +3,7 @@ Need to come up with some interesting SQL queries, preferably addressing some st
 Here are some preliminary possibilities:
 (can't guarantee all of these are feasible, interesting or even useful)
 
-# Check the propensity of Player X to play with or fly under the command of Player Y.
-# Display the typical playing hours of Player X.
-# More accurate display of one's performance improvement over time by tallying results according to gametype, game size, maybe even by time of day.
-# Percentage of times Player X places among the top 10 on ending scores.
+  # Check the propensity of Player X to play with or fly under the command of Player Y.
+  # Display the typical playing hours of Player X.
+  # More accurate display of one's performance improvement over time by tallying results according to gametype, game size, maybe even by time of day.
+  # Percentage of times Player X places among the top 10 on ending scores.
