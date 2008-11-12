@@ -1,0 +1,3 @@
+Graphing is the visual output after we can come up with some interesting sql queries to our growing database. The actual graphing isn't a big issue, I've got some experience using Chart::Strip, the challenge is coming up with some statistical analyses that are relevant to users.
+
+Possibly can enlist the help of the community to tell me what they would like to see. The current vision of the end result is some sort of one-page personal report card.
