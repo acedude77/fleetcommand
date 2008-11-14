@@ -6,19 +6,30 @@ use strict;
 use CGI;
 use CGI::Carp qw ( fatalsToBrowser );
 use File::Basename;
+use DBI;
+use Email::Valid;
+use File::Type;
 
 $CGI::POST_MAX = 1024 * 5000;
 my $safe_filename_characters = "a-zA-Z0-9_.-";
-my $upload_dir = "/tmp";
+my $upload_dir = "/tmp/upload";
 
 my $query = new CGI;
+
+unless (Email::Valid->address($query->param('email_address'))) { 
+	print $query->header; 
+	print "You supplied an invalid email address.";
+	exit; 
+} 
+
+
 my $filename = $query->param("photo");
 my $email_address = $query->param("email_address");
 
 if ( !$filename )
 {
  print $query->header ( );
- print "There was a problem uploading your photo (try a smaller file).";
+ print "There was a problem uploading your file (try a smaller file). LIMIT=5MB";
  exit;
 }
 
@@ -48,6 +59,16 @@ while ( <$upload_filehandle> )
 
 close UPLOADFILE;
 
+
+my $ft = File::Type->new();
+
+unless ($ft->checktype_filename("$upload_dir/$filename") eq 'application/zip') { 
+	print $query->header; 
+	print "You must compress your XML files to .zip format prior to uploading.";
+	exit; 
+}
+
+
 print $query->header ( );
 print <<END_HTML;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
@@ -60,10 +81,24 @@ print <<END_HTML;
    </style>
  </head>
  <body>
-   <p>Thanks for uploading your photo!</p>
+   <p>Thanks for uploading.</p>
    <p>Your email address: $email_address</p>
-   <p>Your photo:</p>
-   <p><img src="/upload/$filename" alt="Photo" /></p>
+   <p>When your report is complete, you will be notified by email.</p>
+   <p>May take up to 15 minutes.</p>
  </body>
 </html>
 END_HTML
+
+
+
+my $db="allegstats";
+my $host="localhost";
+my $user="root";
+my $password="";
+
+my $dbh = DBI->connect ("DBI:mysql:database=$db:host=$host",$user,$password) or die "Can't connect to data
+base: $DBI::errstr\n";
+my $query="insert into uploadinfo values (NULL,\'$filename\',\'$email_address\',NULL)";
+my $sth=$dbh->prepare($query);
+$sth->execute();
+
