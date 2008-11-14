@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 11, 2008 at 02:33 PM
+-- Generation Time: Nov 14, 2008 at 03:13 PM
 -- Server version: 5.0.67
 -- PHP Version: 5.2.6-2ubuntu4
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `fileinfo` (
   `filename` varchar(100) NOT NULL,
   `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `gameinfo` (
   `Core` varchar(100) NOT NULL,
   `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `playerinfo` (
   `BaseCaptures` varchar(100) NOT NULL,
   `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=672 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
 
 -- --------------------------------------------------------
 
@@ -89,4 +89,19 @@ CREATE TABLE IF NOT EXISTS `teaminfo` (
   `Name` varchar(100) NOT NULL,
   `checksum` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uploadinfo`
+--
+
+DROP TABLE IF EXISTS `uploadinfo`;
+CREATE TABLE IF NOT EXISTS `uploadinfo` (
+  `id` int(100) NOT NULL auto_increment,
+  `zipfile` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
