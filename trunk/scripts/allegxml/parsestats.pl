@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 
+use Date::Manip;
 use XML::Simple;
 use DBI;
 use Digest::MD5 qw(md5_hex);
@@ -64,9 +65,13 @@ sub processFile(){
 ######## GAMEINFO
 my @col;
 my @val;
+my $unixtime;
 
 foreach my $k1 (keys %$gameinfo) {
 #	print "$k1 $$gameinfo{$k1}\n";
+	if($k1 eq 'Date'){
+		$unixtime=UnixDate(ParseDate($$gameinfo{$k1}),"%s");
+	}
 	push(@col,$k1);
 	push(@val,$$gameinfo{$k1});
 }
@@ -79,7 +84,7 @@ chop($str);
 
 $" = ","; 
 
-$query="insert into gameinfo ("."@col".",checksum) values (".$str.",\'$cksum\');";
+$query="insert into gameinfo ("."@col".",checksum,unixtime) values (".$str.",\'$cksum\',\'$unixtime\');";
 $sth=$dbh->prepare($query);
 $sth->execute();
 
