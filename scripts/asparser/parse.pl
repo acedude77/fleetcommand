@@ -9,13 +9,22 @@ open(INPUT,"/tmp/index.html");
 my $string="";
 my $dbh=DBI->connect('DBI:mysql:allegskill','root','asdfjk');
 
-$dbh->do("update stats set status=0");
+
+my $sth=$dbh->prepare("select lgp from stats where status=1 limit 1");
+$sth->execute();
+my $last_lgp=$sth->fetchrow_array();
 
 my $lgp=0;
+my $message=" ";
 
 while(my $line=<INPUT>){
 	if($line=~/LastGameProcessedLabel">(\d+)</){
 		$lgp=$1;
+		if($last_lgp == $lgp){
+			last;
+		}else{
+			$dbh->do("update stats set status=0");
+		}	
 	}
 
 	if($line=~/<\/td><td align="right">/){
@@ -27,7 +36,7 @@ while(my $line=<INPUT>){
 		$line=~s/,(\D+\w*),/,"$1",/;
 		$line=~s/^,//;$line=~s/,$//;
 		chomp($line);
-		$string="insert into stats values (null,".$line.",null,1);";
+		$string="insert into stats values (null,".$line.",null,1,$lgp);";
 		$dbh->do($string);
 	}
 }
