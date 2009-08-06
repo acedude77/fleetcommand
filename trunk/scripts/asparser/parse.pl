@@ -43,9 +43,9 @@ while(my $line=<INPUT>){
 
 system("mv /tmp/index.html /tmp/index.html.old");
 
-my $columns="callsign,rank,sigma,drn_kills,stn_caps";
+my $columns="callsign,rank,wins,losses,sigma,drn_kills,stn_caps,hrs_played";
 #my $callsigns="fwiffo,merc";
-my $callsigns="fwiffo,weylin,merc,cashto,podkiller,kltplzyxm,chiveicrook,ryjamsan";
+my $callsigns="pkunk,fwiffo,newbie,pedro,mashmellows,weylin,merc,cashto,podkiller,kltplzyxm,chiveicrook,ryjamsan";
 
 my @callsign_array=split(/,/,$callsigns);
 my $callsigns_str="";
