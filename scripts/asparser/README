@@ -1,0 +1,55 @@
+graphing leaderboard stats
+
+step 1 - download and parse http://leaderboard.alleg.net and store data into allegskill db
+
+parse.pl accomplishes this and tries to avoid storing redudant data by looking at the "Last Game
+Processed" or (lpg). If it matches with the lpg stored last in the db, then script will exit, 
+nothing needs to change in the db. Otherwise, it will insert all the stats from the leaderboard
+to form new rows in the "stats" table along with a timestamp of when these stats were inserted.
+
+parse.pl can be also be run manually as a cgi script (for instant updates to the database) but
+normally it is run by root as a cron job at 15 minute intervals.
+
+step 2 - create graphs according to user selections gathered from web interface
+
+graph.pl was a standalone script that created graphs based on hard-coded values but I converted 
+it into a subroutine so that the web interface script (stats.pl) can pass its cgi variables's 
+values and generate the graphs directly. stats.pl uses an include statement to make use of the 
+subroutine inside graph.pl. 
+
+
+
+Other Details
+
+parse.pl generates some output files but the space used is overwritten afer each iteration.
+After downloading the leaderboard page, it stores this file under /tmp/index.html for parsing.
+Once it is done, the file is renamed to /tmp/index.html.old.
+
+stats.pl also generates a picture file (/tmp/a.png) based on user selections. However, in order
+for the webserver to reach this file, you must create a symlink from /var/www/asparser/a.png
+pointing to /tmp/a.png. It is hardcoded in stats.pl to look for a.png under <webroot>/asparser/a.png 
+but this can be changed to a different path, if desired. Each time this script is run, it overwrites
+the previous a.png. Each time it is run, the requested graph is regenerated.
+
+Both parse.pl and stats.pl can be symlinked to /usr/lib/cgi-bin/ so they can be run from a browser.
+However, parse.pl, although it looks like it has a user interface, its functionality hasn't been
+implemented (deemed unecessary). If you want parse.pl to show you a particular callsign and/or stat
+column, just edit the corresponding variables hardcoded within the script itself. Its main function
+of storing new leaderboard entries into the database is unaffected regardless of what you choose the
+script to output.
+ 
+
+Database details
+
+I actually know very little when it comes to databases so the structure of the database may be very
+suboptimal. This includes the numerical types selected to hold each stat as well as the way new rows
+are inserted and selected during the scripts normal operation. Aside from having one column for each
+stat appearing on the leaderboard, I have these additional columns: timestamp, status, lpg.
+
+timestamp marks the date and time of the stat recorded on that particular row. This data is crucial
+for the graphing portion since all stats are graphed over time.
+
+status can be 0 or 1. Just tells me which rows in the database are the latest ones to be inserted,
+so that I can tell which lpg value I need to use to compare against the latest downloaded lpg.
+
+lpg - last game processed. Obtained from parsing the leaderboard html file.
