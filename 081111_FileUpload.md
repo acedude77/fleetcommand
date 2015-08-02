@@ -1,0 +1,5 @@
+I'm stealing some code to get a basic file uploading cgi form / uploader done. No point in reinventing the wheel. I should probably rename the uploaded file according to their email account so that multiple users can upload at once and not overwrite each other's data.
+
+The idea is to avoid inadvertent DoS on my server by processing the uploaded files at my own schedule rather than processing them "on demand". I should request their email on their submission forms so that I can alert them when their submission has been processed and ready for viewing too.
+
+One way to accomplish this is to store all the uploaded files into some directory, say /tmp/uploads. Then I can run a cron job to check this directory for any files and process them if there are any. Once processed, I can move the files to another directory and send the email to give the user a URL to pick up the results.

@@ -1,0 +1,5 @@
+Today, I was able to pull together all the checksum research and testing and integrate it into the existing code to produce the standard way to uniquely identify the game presented in each xml. This was required because a user can easily (and accidentally) save multiple xmls from the same exact game by clicking on 'Save' more than once. The resulting output is an xml file containing the time/date when the file itself was saved (in the GameInfo section) and will also name the file according to the same time/date data.
+
+The solution to detect duplicate files is to generate a checksum of each file's contents (minus the line that contains time/date data in GameInfo section) and store it in a database. Each subsequent processed file will first have its checksum generated and checked against the table of existing entries and will abort if it is already seen.
+
+Special thanks to TE (it was you wasn't it?) for pointing me in the right direction to use md5\_hex to generate the unique signature I needed to uniquify each xml file.
